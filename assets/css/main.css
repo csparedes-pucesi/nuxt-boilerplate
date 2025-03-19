@@ -1,0 +1,21 @@
+@import 'tailwindcss' theme(static);
+@import '@nuxt/ui';
+
+@theme static {
+	--font-display: 'UniNeue', 'UniNeueBold', sans-serif;
+	--breakpoint-3xl: 1920px;
+}
+
+:root {
+	--ui-primary: var(--ui-color-primary-700);
+}
+
+.dark {
+	--ui-primary: var(--ui-color-primary-300);
+}
+
+body {
+	font-family: var(--font-display);
+	font-size: 1rem;
+	line-height: 1.5;
+}
