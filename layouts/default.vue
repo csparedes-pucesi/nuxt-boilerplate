@@ -93,23 +93,26 @@
       class="transition-transform duration-300 bg-white dark:bg-gray-900"
     >
       <nav
-        class="fixed top-0 z-40 w-full h-[60px] bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 z-40 w-full h-[70px] bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
       >
-        <div class="p-3">
+        <div class="p-3.5">
           <div class="flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center justify-start rtl:justify-end">
               <UButton
                 type="button"
                 icon="heroicons:bars-3-bottom-left-20-solid"
+                :ui="{ leadingIcon: 'text-xl' }"
+                class="mr-4"
                 @click="toggleSidebar"
               />
+
               <NuxtImg
                 class="m-0"
-                src="/logo-puce-i.png"
+                src="/psi.png"
                 alt="logo-puce"
-                width="160"
-                height="40"
+                width="170"
+                height="38"
                 @click="router.push({ name: 'consultoria', replace: true })"
               />
             </div>
