@@ -1,347 +1,155 @@
 <template>
   <!-- Solo se muestra si visible es true -->
   <div v-if="visible" class="fixed inset-0 z-50 overflow-y-auto p-4">
-    <!-- Contenedor del formulario (centrado ) -->
+    <!-- Contenedor del formulario (centrado) -->
     <div
       class="max-w-9xl mx-auto mt-14 p-4 border border-gray-300 shadow rounded bg-white"
     >
       <!-- Encabezado: título y botón Cerrar -->
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-lg font-semibold">Actualizar Equipo</h2>
-        <button
-          @click="closeModal"
+        <UButton
+          variant="ghost"
           class="bg-gray-200 hover:bg-gray-300 text-gray-700 rounded px-3 py-1 text-sm"
+          @click="closeModal"
         >
           Cerrar
-        </button>
+        </UButton>
       </div>
 
-      <!-- Formulario en 3 columnas -->
       <form @submit.prevent="onSubmit">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Columna 1 -->
           <div class="space-y-2">
-            <!-- Ubicación -->
-            <label
-              for="ubicacion"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Ubicación
-            </label>
-            <input
-              id="ubicacion"
-              type="text"
+            <UInput
               v-model="form.ubicacion"
+              label="Ubicación"
               placeholder="Ej: BIENESTAR"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Marca Monitor -->
-            <label
-              for="marcaMonitor"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Marca Monitor
-            </label>
-            <input
-              id="marcaMonitor"
-              type="text"
+            <UInput
               v-model="form.marcaMonitor"
+              label="Marca Monitor"
               placeholder="Ej: SAMSUNG"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Marca CPU -->
-            <label
-              for="marcaCpu"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Marca CPU
-            </label>
-            <input
-              id="marcaCpu"
-              type="text"
+            <UInput
               v-model="form.marcaCpu"
+              label="Marca CPU"
               placeholder="Ej: HP"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Procesador Marca -->
-            <label
-              for="marcaProcesador"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Procesador Marca
-            </label>
-            <input
-              id="marcaProcesador"
-              type="text"
+            <UInput
               v-model="form.marcaProcesador"
+              label="Procesador Marca"
               placeholder="Ej: Intel Core i5-3470"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- RAM Capacidad -->
-            <label
-              for="ramCapacidad"
-              class="block text-sm font-medium text-gray-700"
-            >
-              RAM Capacidad
-            </label>
-            <input
-              id="ramCapacidad"
-              type="text"
+            <UInput
               v-model="form.ramCapacidad"
+              label="RAM Capacidad"
               placeholder="Ej: 8 GB"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Estado Disco Antes -->
-            <label
-              for="estadoDiscoAntes"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Estado Disco Antes
-            </label>
-            <input
-              id="estadoDiscoAntes"
-              type="text"
+            <UInput
               v-model="form.estadoDiscoAntes"
+              label="Estado Disco Antes"
               placeholder="Ej: BUENO"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Estado Mantenimiento -->
-            <label
-              for="estadoMantenimiento"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Estado Mantenimiento
-            </label>
-            <select
-              id="estadoMantenimiento"
+            <USelect
               v-model="form.estadoMantenimiento"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+              label="Estado Mantenimiento"
             >
               <option value="">Seleccionar</option>
               <option value="ACEPTADO">ACEPTADO</option>
               <option value="ENVIADO">ENVIADO</option>
               <option value="APROBADO AUTOMATICO">APROBADO AUTOMATICO</option>
-            </select>
-
-            <!-- Fecha Compra -->
-            <label
-              for="fechaCompra"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Fecha Compra
-            </label>
-            <input
-              id="fechaCompra"
-              type="date"
+            </USelect>
+            <UInput
               v-model="form.fechaCompra"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+              label="Fecha Compra"
+              type="date"
             />
           </div>
 
           <!-- Columna 2 -->
           <div class="space-y-2">
-            <!-- Dependencia -->
-            <label
-              for="dependencia"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Dependencia
-            </label>
-            <input
-              id="dependencia"
-              type="text"
+            <UInput
               v-model="form.dependencia"
+              label="Dependencia"
               placeholder="Ej: INGENIERIA"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Modelo Monitor -->
-            <label
-              for="modeloMonitor"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Modelo Monitor
-            </label>
-            <input
-              id="modeloMonitor"
-              type="text"
+            <UInput
               v-model="form.modeloMonitor"
+              label="Modelo Monitor"
               placeholder="Ej: HP"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Modelo CPU -->
-            <label
-              for="modeloCpu"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Modelo CPU
-            </label>
-            <input
-              id="modeloCpu"
-              type="text"
+            <UInput
               v-model="form.modeloCpu"
+              label="Modelo CPU"
               placeholder="Ej: Compaq 6300 Pro MT"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- RAM Marca -->
-            <label
-              for="ramMarca"
-              class="block text-sm font-medium text-gray-700"
-            >
-              RAM Marca
-            </label>
-            <input
-              id="ramMarca"
-              type="text"
+            <UInput
               v-model="form.ramMarca"
+              label="RAM Marca"
               placeholder="Ej: HYPERX"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Disco Marca -->
-            <label
-              for="discoMarca"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Disco Marca
-            </label>
-            <input
-              id="discoMarca"
-              type="text"
+            <UInput
               v-model="form.discoMarca"
+              label="Disco Marca"
               placeholder="Ej: WD"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Estado Disco Actual -->
-            <label
-              for="estadoDiscoActual"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Estado Disco Actual
-            </label>
-            <input
-              id="estadoDiscoActual"
-              type="text"
+            <UInput
               v-model="form.estadoDiscoActual"
+              label="Estado Disco Actual"
               placeholder="Ej: BUENO"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Usuario -->
-            <label
-              for="usuario"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Usuario
-            </label>
-            <input
-              id="usuario"
-              type="text"
+            <UInput
               v-model="form.usuario"
+              label="Usuario"
               placeholder="Ej: jibarra@pucesi.edu.ec"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
           </div>
 
           <!-- Columna 3 -->
           <div class="space-y-2">
-            <!-- Nombre PC -->
-            <label
-              for="nombrePc"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Nombre PC
-            </label>
-            <input
-              id="nombrePc"
-              type="text"
+            <UInput
               v-model="form.nombrePc"
+              label="Nombre PC"
               placeholder="Ej: PASANTEING3"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Código Monitor -->
-            <label
-              for="codigoMonitor"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Código Monitor
-            </label>
-            <input
-              id="codigoMonitor"
-              type="text"
+            <UInput
               v-model="form.codigoMonitor"
+              label="Código Monitor"
               placeholder="Ej: 121015003066"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Código CPU -->
-            <label
-              for="codigoCpu"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Código CPU
-            </label>
-            <input
-              id="codigoCpu"
-              type="text"
+            <UInput
               v-model="form.codigoCpu"
+              label="Código CPU"
               placeholder="Ej: 121015002536"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
-
-            <!-- Disco Sólido -->
-            <label
-              for="discoSolido"
-              class="block text-sm font-medium text-gray-700"
-            >
-              Disco Sólido
-            </label>
-            <input
-              id="discoSolido"
-              type="text"
+            <UInput
               v-model="form.discoSolido"
+              label="Disco Sólido"
               placeholder="Ej: SSD 240 GB"
-              class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
             />
           </div>
         </div>
 
-        <!-- Observación (toda la fila) -->
+        <!-- Observación (fila completa) -->
         <div class="mt-4">
-          <label
-            for="observacion"
-            class="block text-sm font-medium text-gray-700"
-          >
-            Observación
-          </label>
-          <textarea
-            id="observacion"
+          <UTextarea
             v-model="form.observacion"
-            class="w-full border border-gray-300 rounded px-2 py-1 text-sm"
-            rows="2"
+            label="Observación"
             placeholder="Ej: Revisión general de equipo"
-          ></textarea>
+            :rows="2"
+          />
         </div>
       </form>
 
       <!-- Botón Actualizar -->
       <div class="flex justify-end mt-4">
-        <button
-          @click="actualizarEquipo"
+        <UButton
           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded text-sm"
+          @click="actualizarEquipo"
         >
           Actualizar
-        </button>
+        </UButton>
       </div>
     </div>
   </div>
