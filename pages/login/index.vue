@@ -1,37 +1,36 @@
 <script lang="ts" setup>
 import type { FormSubmitEvent } from '@nuxt/ui'
 import z from 'zod'
+import { usePostLogin } from '../../composables/login/login'
 
 definePageMeta({
   layout: 'login',
 })
 
 const schema = z.object({
-  email: z.string({ message: 'Email required' }).email('Invalid email'),
+  username: z.string({ message: 'El nombre de usuario es requerido' }),
   password: z
-    .string({ message: 'Password required' })
-    .min(3, 'Must be at least 3 characters'),
+    .string({ message: 'La contraseña es requerida' })
+    .min(3, 'Mínimo debe tener 3 caracteres'),
 })
 
 type Schema = z.infer<typeof schema>
 
 const state = reactive<Partial<Schema>>({
-  email: undefined,
+  username: undefined,
   password: undefined,
 })
 
 const toast = useToast()
-const isLoading = ref(false)
+const useLogin = usePostLogin()
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  console.log(event.data)
-  isLoading.value = true
-  await new Promise((resolve) => setTimeout(resolve, 2000))
+  await useLogin.mutateAsync(event.data)
+  // await new Promise((resolve) => setTimeout(resolve, 2000))
   toast.add({
-    title: 'Success',
-    description: 'You have successfully logged in',
+    title: 'Acceso correcto',
+    description: `${useLogin.data}`,
   })
-  isLoading.value = false
 }
 </script>
 
@@ -51,7 +50,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       >
         <UFormField label="Usuario" name="email">
           <UInput
-            v-model="state.email"
+            v-model="state.username"
             icon="heroicons:user-circle"
             size="xl"
             variant="outline"
@@ -76,7 +75,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           type="submit"
           class="w-full flex items-center justify-center p-4"
           label="Ingresar"
-          :loading="isLoading"
         />
       </UForm>
     </div>
