@@ -123,7 +123,7 @@
     </div>
 
     <!-- Componente Modal: Se abre al hacer clic en Editar -->
-    <ActualizarEquipoMantenimientoModal
+    <MantenimientoActualizarEquipoMantenimientoModal
       :visible="modalVisible"
       @update:visible="modalVisible = $event"
     />
@@ -133,7 +133,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import type { InventarioItem } from '~/types/mantenimiento/InventarioItem.dto'
-import ActualizarEquipoMantenimientoModal from '@/pages/mantenimiento/components/ActualizarEquipoMantenimientoModal.vue'
 
 // Estado de la paginación
 const paginaActual = ref<number>(1)

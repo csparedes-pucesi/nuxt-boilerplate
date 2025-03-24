@@ -1,5 +1,5 @@
 <template>
-  <DashboardLayout class="text-xs md:text-sm">
+  <div>
     <!-- PRIMER CONTENEDOR: BARRA Y MENÚ -->
     <div class="relative z-10">
       <!-- Barra superior azul -->
@@ -254,16 +254,15 @@
           <h3 class="text-lg md:text-xl font-bold pl-5" style="color: #5a9bd5">
             Items del Catálogo
           </h3>
-          <ItemsCatalogoTable :items="itemsFiltrados" />
+          <MantenimientoItemsCatalogoTable :items="itemsFiltrados" />
         </div>
       </div>
     </div>
-  </DashboardLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import ItemsCatalogoTable from '~/components/mantenimiento/ItemsCatalogoTable.vue'
 import type { Catalogo } from '~/types/mantenimiento/Catalogo.dto'
 
 interface Submenu {

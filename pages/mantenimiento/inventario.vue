@@ -6,13 +6,11 @@
       <div
         class="mt-3.5 flex flex-wrap items-center bg-sky-400 px-4 py-2 text-white font-bold"
       >
-        <!-- Logo o imagen  -->
+        <!-- Logo o imagen -->
         <div class="flex items-center bg-gray-800 px-3 py-2 rounded-md">
           <NuxtImg src="/logopuce-si1.png" alt="PUCE" class="h-10" />
         </div>
-
         <div class="flex items-center gap-3 ml-4">
-          <!-- Ícono y texto con tamaños responsivos -->
           <UIcon
             name="fa6-solid:screwdriver-wrench"
             class="text-white text-2xl md:text-4xl"
@@ -26,22 +24,22 @@
       <!-- Menú principal -->
       <div ref="menuRef" class="relative z-10">
         <div
-          class="bg-gray-800 text-white py-2 md:py-4 px-4 md:px-6 flex items-center"
+          class="bg-gray-800 text-white py-2 md:py-3 px-4 md:px-6 flex items-center"
         >
           <div
-            class="flex items-center cursor-pointer text-sm md:text-xl"
+            class="flex items-center cursor-pointer text-sm md:text-lg"
             @click="toggleMenu"
           >
             <UIcon
               name="fa6-solid:briefcase"
-              class="mr-2 md:mr-3 text-lg md:text-2xl"
+              class="mr-2 text-base md:text-2xl"
             />
-            <span class="font-bold text-lg md:text-2xl">
+            <span class="font-bold text-base md:text-xl">
               SISTEMA MANTENIMIENTO
             </span>
             <UIcon
-              name="fa6-solid:chevron-right"
-              class="ml-2 md:ml-3 text-lg md:text-2xl"
+              name="heroicons:chevron-right-16-solid"
+              class="ml-2 text-2xl md:text-3xl"
             />
           </div>
         </div>
@@ -74,7 +72,7 @@
     <div class="p-3 md:p-6">
       <!-- TÍTULO -->
       <h1 class="text-xl md:text-3xl font-bold">
-        <span class="text-black">Inventario</span>
+        <span class="text-black">Inventario - </span>
         <span class="text-gray-500 ml-1">Equipos de computo</span>
       </h1>
 
@@ -86,17 +84,19 @@
         >
           Catálogo
         </label>
-        <select
+        <!-- Se reemplaza el <select> por <USelect> -->
+        <USelect
           id="catalogo"
-          class="border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-300 h-10 md:h-12 px-2 md:px-3 text-xs md:text-sm w-full sm:w-64 md:w-72 appearance-none"
-        >
-          <option>[Seleccione]</option>
-        </select>
+          v-model="catalogo"
+          placeholder="[Seleccione]"
+          :items="catalogoItems"
+          class="border-2 border-gray-300 rounded-md focus:outline-none focus:border-blue-300 h-10 md:h-12 px-2 md:px-3 text-xs md:text-sm w-full sm:w-64 md:w-72"
+        />
       </div>
 
       <!-- TABLA DE INVENTARIO -->
       <div class="mt-4 md:mt-6">
-        <InventarioMantenimientoTable />
+        <MantenimientoInventarioMantenimientoTable />
       </div>
     </div>
   </div>
@@ -104,11 +104,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-// import { useRouter } from 'vue-router'
-// import { obtenerRutasConPadre7 } from '@/modules/dashboard/helpers/parse-object-rutas'
-import InventarioMantenimientoTable from '~/components/mantenimiento/InventarioMantenimientoTable.vue'
-
-// const router = useRouter()
+// Variables y funciones para el menú
 const menuOpen = ref<boolean>(false)
 const menuRef = ref<HTMLElement | null>(null)
 interface Submenu {
@@ -148,11 +144,6 @@ function openSubmenu(submenu: Submenu): void {
   console.log('Abriendo submenu:', submenu)
 }
 
-// const navigateTo = (url: string): void => {
-//   menuOpen.value = false
-//   router.push(url)
-// }
-
 const handleClickOutside = (event: Event): void => {
   if (menuRef.value && !menuRef.value.contains(event.target as Node)) {
     menuOpen.value = false
@@ -161,21 +152,13 @@ const handleClickOutside = (event: Event): void => {
 
 onMounted((): void => {
   document.addEventListener('click', handleClickOutside)
-
-  // const rutasMantenimiento = obtenerRutasConPadre7()
-  // console.log(
-  //   '🛠 Rutas de mantenimiento cargadas en el menú:',
-  //   rutasMantenimiento
-  // )
-
-  // menuItems.value = rutasMantenimiento.map((ruta: any) => ({
-  //   ruta_nombre: ruta.ruta_nombre,
-  //   ruta_url: ruta.ruta_url,
-  //   open: false,
-  // }))
 })
 
 onUnmounted((): void => {
   document.removeEventListener('click', handleClickOutside)
 })
+
+// Nuevas referencias para el USelect en el formulario
+const catalogo = ref('')
+const catalogoItems = ref(['[Seleccione]'])
 </script>
