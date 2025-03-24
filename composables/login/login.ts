@@ -18,12 +18,14 @@ export const usePostLogin = () => {
         description: data,
         color: 'success',
       })
+      const router = useRouter()
+      router.push('/dashboard')
     },
     onError: (error) => {
       console.error('Login error', error)
       toast.add({
         title: 'Login error',
-        description: 'There was an error logging in',
+        description: error.message,
         color: 'error',
       })
     },

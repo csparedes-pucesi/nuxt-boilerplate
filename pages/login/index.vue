@@ -9,9 +9,7 @@ definePageMeta({
 
 const schema = z.object({
   username: z.string({ message: 'El nombre de usuario es requerido' }),
-  password: z
-    .string({ message: 'La contraseña es requerida' })
-    .min(3, 'Mínimo debe tener 3 caracteres'),
+  password: z.string({ message: 'La contraseña es requerida' }),
 })
 
 type Schema = z.infer<typeof schema>
@@ -21,16 +19,10 @@ const state = reactive<Partial<Schema>>({
   password: undefined,
 })
 
-const toast = useToast()
-const useLogin = usePostLogin()
+const useLogin = markRaw(usePostLogin())
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   await useLogin.mutateAsync(event.data)
-  // await new Promise((resolve) => setTimeout(resolve, 2000))
-  toast.add({
-    title: 'Acceso correcto',
-    description: `${useLogin.data}`,
-  })
 }
 </script>
 
@@ -75,6 +67,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           type="submit"
           class="w-full flex items-center justify-center p-4"
           label="Ingresar"
+          :loading="useLogin.isPending.value"
         />
       </UForm>
     </div>
