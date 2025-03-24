@@ -1,3 +1,39 @@
+<script lang="ts" setup>
+import type { FormSubmitEvent } from '@nuxt/ui'
+import z from 'zod'
+import { usePostLogin } from '../../composables/login/login'
+
+definePageMeta({
+  layout: 'login',
+})
+
+const schema = z.object({
+  username: z.string({ message: 'El nombre de usuario es requerido' }),
+  password: z
+    .string({ message: 'La contraseña es requerida' })
+    .min(3, 'Mínimo debe tener 3 caracteres'),
+})
+
+type Schema = z.infer<typeof schema>
+
+const state = reactive<Partial<Schema>>({
+  username: undefined,
+  password: undefined,
+})
+
+const toast = useToast()
+const useLogin = usePostLogin()
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  await useLogin.mutateAsync(event.data)
+  // await new Promise((resolve) => setTimeout(resolve, 2000))
+  toast.add({
+    title: 'Acceso correcto',
+    description: `${useLogin.data}`,
+  })
+}
+</script>
+
 <template>
   <div class="flex items-center justify-center min-h-screen">
     <div
@@ -6,125 +42,41 @@
       <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center">
         Bienvenido
       </h2>
-
       <UForm
-        :state="state"
         :schema="schema"
-        @submit="onSubmit"
+        :state="state"
         class="space-y-6"
+        @submit.prevent="onSubmit"
       >
-        <UFormField name="email" label="Correo Electrónico">
+        <UFormField label="Usuario" name="email">
           <UInput
-            v-model="state.email"
-            icon="i-heroicons-envelope"
-            placeholder="correo@ejemplo.com"
+            v-model="state.username"
+            icon="heroicons:user-circle"
             size="xl"
             variant="outline"
-            class="w-full"
+            placeholder="Ingrese su usuario"
+            class="w-full rounded-lg"
           />
         </UFormField>
 
-        <UFormField name="password" label="Contraseña">
+        <UFormField label="Contraseña" name="password">
           <UInput
             v-model="state.password"
-            icon="i-heroicons-lock-closed"
             type="password"
-            placeholder="******"
+            icon="heroicons:lock-closed"
             size="xl"
             variant="outline"
-            class="w-full"
+            placeholder="Ingrese su usuario"
+            class="w-full rounded-lg"
           />
         </UFormField>
 
         <UButton
           type="submit"
           class="w-full flex items-center justify-center p-4"
-          :loading="loading"
           label="Ingresar"
         />
       </UForm>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import * as z from 'zod'
-import { useRouter } from 'vue-router'
-import { useToast } from '#imports'
-import type { FormSubmitEvent } from '@nuxt/ui'
-
-const router = useRouter()
-const toast = useToast()
-
-const schema = z.object({
-  email: z
-    .string()
-    .refine(
-      (value) =>
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
-        /^[a-zA-Z0-9_.-]{3,}$/.test(value),
-      {
-        message: 'Debe ser un correo válido o un nombre de usuario',
-      }
-    ),
-  password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
-})
-
-type Schema = z.output<typeof schema>
-
-const state = ref<Schema>({
-  email: '',
-  password: '',
-})
-
-const loading = ref(false)
-
-const onSubmit = async (event: FormSubmitEvent<Schema>) => {
-  loading.value = true
-
-  // Mostrar toast de "procesando"
-  const processing = toast.add({
-    title: 'Procesando...',
-    description: 'Estamos verificando tus credenciales...',
-    color: 'info',
-    icon: 'i-heroicons-arrow-path',
-    duration: 2000, // ⏳ espera 2s antes de redirigir
-  })
-
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    toast.remove(processing.id)
-
-    toast.add({
-      title: 'Inicio de sesión exitoso',
-      description: `Bienvenido, ${event.data.email}`,
-      color: 'success',
-      icon: 'i-heroicons-check-circle',
-    })
-
-    // ⏳ Espera brevemente antes de redirigir
-    setTimeout(() => {
-      router.push('/dashboard')
-    }, 1000)
-  } catch (err) {
-    toast.remove(processing.id)
-
-    toast.add({
-      title: 'Error al iniciar sesión',
-      description: 'Revisa tus credenciales e inténtalo de nuevo.',
-      color: 'error',
-      icon: 'i-heroicons-exclamation-triangle',
-    })
-
-    console.error('❌ Error en login:', err)
-  } finally {
-    loading.value = false
-  }
-}
-
-definePageMeta({
-  layout: 'login',
-})
-</script>
