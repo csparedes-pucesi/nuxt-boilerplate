@@ -263,7 +263,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import ItemsCatalogoTable from '@/pages/mantenimiento/components/ItemsCatalogoTable.vue'
+import ItemsCatalogoTable from '~/components/mantenimiento/ItemsCatalogoTable.vue'
 import type { Catalogo } from '~/types/mantenimiento/Catalogo.dto'
 
 interface Submenu {

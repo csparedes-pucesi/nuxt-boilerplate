@@ -106,7 +106,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 // import { useRouter } from 'vue-router'
 // import { obtenerRutasConPadre7 } from '@/modules/dashboard/helpers/parse-object-rutas'
-import InventarioMantenimientoTable from '@/pages/mantenimiento/components/InventarioMantenimientoTable.vue'
+import InventarioMantenimientoTable from '~/components/mantenimiento/InventarioMantenimientoTable.vue'
 
 // const router = useRouter()
 const menuOpen = ref<boolean>(false)
