@@ -264,7 +264,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import ItemsCatalogoTable from '@/pages/mantenimiento/components/ItemsCatalogoTable.vue'
-import type { Catalogo } from '@/pages/mantenimiento/dto/Catalogo.dto'
+import type { Catalogo } from '~/types/mantenimiento/Catalogo.dto'
 
 interface Submenu {
   ruta_nombre: string

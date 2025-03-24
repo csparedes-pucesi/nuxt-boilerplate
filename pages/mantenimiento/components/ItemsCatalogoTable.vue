@@ -113,7 +113,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { ItemCatalogo } from '@/pages/mantenimiento/dto/ItemCatalogo.dto' // 📌 Importando la interfaz compartida
+import type { ItemCatalogo } from '~/types/mantenimiento/ItemCatalogo.dto' // 📌 Importando la interfaz compartida
 
 // Definir `props` con tipado fuerte
 const props = defineProps<{ items: ItemCatalogo[] }>()
