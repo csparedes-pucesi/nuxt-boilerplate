@@ -15,6 +15,8 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/ui',
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
   ],
   css: ['~/assets/css/main.css', '~/assets/fonts/fonts.css'],
   ui: {
@@ -30,5 +32,16 @@ export default defineNuxtConfig({
       ],
     },
   },
-  // plugins: ['~/plugins/tankstack-query.ts', '~/plugins/axios.ts'],
+  piniaPluginPersistedstate: {
+    storage: 'cookies',
+    cookieOptions: {
+      sameSite: 'lax',
+    },
+    debug: true,
+  },
+  app: {
+    pageTransition: {
+      mode: 'out-in',
+    },
+  },
 })

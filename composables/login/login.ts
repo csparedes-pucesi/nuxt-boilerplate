@@ -1,29 +1,31 @@
 import { useMutation } from '@tanstack/vue-query'
 import useApi from '../api/api'
+import { useMyLoginStore } from '../../stores/login/login'
 
 //
 const postLogin = async (data: { username: string; password: string }) => {
   const response = await useApi.post('/auth/login', data)
-  console.log(response.data)
   return response.data
 }
 
 export const usePostLogin = () => {
-  const toast = useToast()
+  const toast = shallowRef(useToast())
+  const store = useMyLoginStore()
   return useMutation({
     mutationFn: postLogin,
     onSuccess: (data) => {
-      toast.add({
-        title: 'Login successful',
-        description: data,
+      store.setData(data)
+      toast.value.add({
+        title: 'Acceso correcto',
+        description: 'Acceso correcto',
         color: 'success',
       })
+
       const router = useRouter()
       router.push('/dashboard')
     },
     onError: (error) => {
-      console.error('Login error', error)
-      toast.add({
+      toast.value.add({
         title: 'Login error',
         description: error.message,
         color: 'error',
