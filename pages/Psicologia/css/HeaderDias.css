@@ -1,0 +1,317 @@
+/* ==================================================
+   1) ENCABEZADOS DE DÍAS CON POSICIÓN STICKY
+   ================================================== */
+/* 1.1. Encabezados de días sticky para mantenerlos fijos en la parte superior */
+.main-calendar .fc-col-header {
+  position: sticky;
+  top: 0;
+  left: 0; /* Fija la posición horizontal */
+  width: 100%; /* Ocupa el ancho completo para evitar recortes */
+  z-index: 1000; /* Se posiciona sobre el contenido */
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  /* Mostrar los días en una sola fila */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ==================================================
+   2) ESTILOS PARA CADA CELDA DEL ENCABEZADO DE DÍAS
+   ================================================== */
+/* 2.1. Estilos para cada celda: espacio, fondo, borde y tipografía */
+.main-calendar .fc-col-header-cell {
+  flex: 1;
+  background-color: #ffffff !important;
+  border-bottom: 2px solid #dde3ea !important; /* Línea inferior */
+  text-align: center !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  padding: 5px 0 !important;
+  position: relative !important;
+
+  /* Se eliminan los bordes laterales originales */
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* 2.2. Borde derecho parcial para celdas (excepto la última) */
+.main-calendar .fc-col-header-cell:not(:last-child)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 60px !important; /* Altura desde la parte superior para iniciar el borde */
+  right: 0 !important; /* Borde solo a la derecha */
+  height: calc(100% - 60px) !important; /* Altura ajustada para cubrir la celda */
+  border-right: 2px solid #dde3ea !important;
+}
+
+/* ==================================================
+   3) ESTILOS DE TEXTO: NOMBRES Y NÚMEROS DE DÍAS
+   ================================================== */
+/* 3.1. Nombre del día */
+.main-calendar .fc-col-header-cell-cushion span.day-name {
+  font-size: 8.5pt; /* Tamaño absoluto */
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: uppercase; /* Texto en mayúsculas */
+  color: #444746; /* Color gris claro */
+}
+
+/* 3.2. Número del día */
+.main-calendar .fc-col-header-cell-cushion span.day-number {
+  font-size: 19.5pt; /* Tamaño absoluto */
+  font-family: Roboto, Arial, sans-serif;
+  color: #434645; /* Color gris */
+}
+
+/* ==================================================
+   4) ESTILOS PARA EL DÍA ACTUAL
+   ================================================== */
+/* 4.1. Nombre del día actual */
+.main-calendar .fc-day-today .fc-col-header-cell-cushion span.day-name {
+  color: #0b57d0; /* Azul para el día actual */
+}
+
+/* 4.2. Número del día actual */
+.main-calendar .fc-day-today .fc-col-header-cell-cushion span.day-number {
+  background-color: #0b57d0; /* Fondo azul */
+  color: #fff; /* Texto blanco */
+  border-radius: 9999px; /* Forma redondeada */
+  padding: 3px 10px; /* Espaciado interno */
+  display: inline-block; /* Permite el redondeo */
+}
+
+/* ==================================================
+   5) ESTILOS AL PASAR EL MOUSE SOBRE DÍAS NO ACTUALES
+   ================================================== */
+/* 5.1. Hover sobre el número de días que NO son el actual */
+.main-calendar
+  .fc-col-header-cell:not(.fc-day-today)
+  .fc-col-header-cell-cushion:hover
+  span.day-number {
+  background-color: #ebedef; /* Fondo gris claro */
+  color: #000; /* Texto negro */
+  border-radius: 9999px; /* Forma ovalada */
+  padding: 3px 10px; /* Espaciado interno */
+  display: inline-block;
+  border: 3px solid #006596; /* Aro azul */
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    border 0.2s ease-in-out; /* Suaviza la transición */
+}
+
+/* ==================================================
+   6) ESTILOS PARA VISTAS DE DÍA ÚNICO Y SEMANA
+   ================================================== */
+/* 6.1. Vista de día único */
+/* 6.1.1. Contenedor principal de la vista de día único */
+.calendar-single-day-content {
+  display: flex; /* Habilita Flexbox */
+  flex-direction: row; /* Organiza los elementos en fila */
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 1rem; /* Espacio entre elementos */
+  position: relative; /* Permite posicionar elementos hijos de forma absoluta */
+  padding-right: 0.94rem; /* Aproximadamente 15px */
+}
+
+/* 6.1.2. Cabecera de la vista de día único */
+.calendar-single-day-header {
+  position: relative; /* Posicionamiento relativo para elementos hijos */
+  display: flex; /* Habilita Flexbox */
+  flex-direction: column; /* Organiza los elementos en columna */
+  align-items: flex-start; /* Alinea al inicio (izquierda) */
+  background-color: #ffffff; /* Fondo blanco */
+  min-height: 5.31rem; /* Aproximadamente 85px */
+}
+
+/* 6.1.3. Variante de cabecera para día único */
+.single-day-header-relative {
+  position: relative;
+  min-height: 5.31rem; /* Misma altura mínima */
+  background-color: #ffffff;
+}
+
+/* 6.1.4. Nombre y número del día en la vista de día único */
+.calendar-day-name {
+  font-size: 0.7rem; /* Aproximadamente 8.5pt */
+  font-weight: 500;
+  font-family: 'Google Sans', sans-serif;
+  color: #1f1f1f;
+}
+
+.calendar-day-number {
+  font-size: 1.63rem; /* Aproximadamente 19.5pt (~26px) */
+  font-weight: 300;
+  font-family: 'Google Sans', sans-serif;
+  color: #1f1f1f;
+}
+
+/* 6.1.5. Información adicional del día */
+.calendar-day-info {
+  position: relative;
+  margin-left: 1rem; /* Espacio para separar del divisor vertical */
+}
+
+/* 6.1.6. Línea vertical divisoria en la vista de día único */
+.single-day-column-line {
+  position: absolute;
+  bottom: 0;
+  left: 3.4rem; /* Posicionado a la derecha de la zona horaria */
+  width: 0.06rem; /* Aproximadamente 1px */
+  height: 1.56rem; /* Aproximadamente 25px */
+  background-color: #ddd; /* Gris claro */
+}
+
+/* 6.1.7. Línea horizontal en la parte inferior de la vista de día único */
+.single-day-row-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 0.125rem solid #ddd; /* Aproximadamente 2px */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 6.2. Vista de semana */
+/* 6.2.1. Contenedor principal del calendario */
+.main-calendar {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 6.2.2. Cabecera de columnas en la vista de semana */
+.fc-col-header {
+  display: flex; /* Distribución horizontal */
+  width: 100%;
+  padding-right: 1.4rem; /* Espacio en el extremo derecho */
+  box-sizing: border-box;
+}
+
+/* 6.2.3. Columna para la zona horaria en la vista de semana */
+.fc-timezone-col {
+  flex: 0 0 3.4rem; /* Ancho fijo de 3.4rem */
+  display: flex;
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+}
+
+/* 6.2.4. Cada columna de día en la vista de semana */
+.fc-col-header-cell {
+  flex: 1; /* Ocupa el espacio restante */
+  cursor: pointer; /* Interactivo */
+  text-align: center;
+  position: relative; /* Asegura posicionamiento para pseudoelementos */
+}
+
+/* 6.2.5. Espaciado interno dentro de cada celda de la cabecera */
+.fc-col-header-cell-cushion {
+  padding: 0.5rem; /* Padding uniforme */
+}
+
+/* 6.2.6. Línea vertical divisoria en la vista de semana */
+.week-view-column-line {
+  display: inline-block;
+  width: 0.125rem; /* Aproximadamente 2px */
+  background-color: #ddd;
+  height: 3.125rem; /* Aproximadamente 50px */
+  margin: 0 0rem;
+}
+
+/* 6.2.7. Estilos comunes para zona horaria en ambas vistas */
+.calendar-time-zone,
+.week-timezone {
+  align-self: flex-end; /* Alineado al final del contenedor */
+  font-size: 0.7rem; /* Aproximadamente 8.5pt */
+  color: #1f1f1f;
+  font-family: 'Google Sans', sans-serif;
+  margin-left: 0.5rem;
+}
+
+/* ==================================================
+   7) ESTILOS EXTRA (posición de celdas específicas)
+   ================================================== */
+/* 7.1. Ejemplo de posición extra para la tercera celda */
+.fc-col-header-cell:nth-child(3) {
+  position: relative;
+}
+
+/* ==================================================
+   8) OVERRIDES PARA DARK MODE
+   ================================================== */
+/* 8.1. Fondos y bordes en dark mode para encabezados y cabeceras */
+html.dark .main-calendar .fc-col-header,
+html.dark .calendar-single-day-header,
+html.dark .single-day-header-relative {
+  background-color: #1f2937 !important;
+  border-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* 8.2. Celdas del encabezado en dark mode */
+html.dark .main-calendar .fc-col-header-cell {
+  background-color: #1f2937 !important;
+  border-bottom-color: #0e4385 !important;
+  color: #ffffff !important;
+}
+
+/* 8.3. Texto en dark mode para nombres y números de días */
+html.dark .main-calendar .fc-col-header-cell-cushion span.day-name,
+html.dark .main-calendar .fc-col-header-cell-cushion span.day-number {
+  color: #ffffff !important;
+}
+
+/* 8.4. Día actual en dark mode */
+html.dark .main-calendar .fc-day-today .fc-col-header-cell-cushion span.day-name {
+  color: #3b82f6 !important;
+}
+html.dark .main-calendar .fc-day-today .fc-col-header-cell-cushion span.day-number {
+  background-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* 8.5. Hover en dark mode para días que no son el actual */
+html.dark
+  .main-calendar
+  .fc-col-header-cell:not(.fc-day-today)
+  .fc-col-header-cell-cushion:hover
+  span.day-number {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border: 3px solid #6b7280 !important;
+}
+
+/* 8.6. Vista de día único en dark mode */
+html.dark .calendar-day-name,
+html.dark .calendar-day-number,
+html.dark .calendar-time-zone,
+html.dark .week-timezone {
+  color: #ffffff !important;
+}
+
+/* 8.7. Líneas divisorias en dark mode */
+html.dark .single-day-column-line,
+html.dark .single-day-row-line {
+  background-color: #1f2937 !important;
+  border-bottom-color: #0e4385 !important;
+}
+
+/* 8.8. Zona horaria en dark mode */
+html.dark .calendar-time-zone,
+html.dark .week-timezone {
+  color: #ffffff !important;
+}
+
+/* 8.9. Vista de semana en dark mode: columna de zona horaria */
+html.dark .fc-timezone-col {
+  color: #ffffff !important;
+}
+
+/* 8.10. Bordes oscuros en modo dark para celdas */
+html.dark .main-calendar .fc-col-header-cell:not(:last-child)::before {
+  border-right-color: #0e4385 !important;
+}

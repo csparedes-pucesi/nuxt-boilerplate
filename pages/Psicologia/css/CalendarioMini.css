@@ -1,0 +1,338 @@
+/* ========================================================
+   RESETEO Y CONFIGURACIÓN BASE DEL MINI CALENDARIO
+======================================================== */
+.mini-calendar {
+  transform: none !important;
+  transform-origin: top center !important;
+  position: relative;
+  z-index: 1 !important;
+}
+
+/* ========================================================
+   ESTILOS DE LOS BOTONES (ANTERIOR / SIGUIENTE)
+======================================================== */
+.mini-calendar .fc-prev-button,
+.mini-calendar .fc-next-button {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  font-size: 0.6rem !important;
+  font-weight: normal !important;
+  padding: 5px !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+}
+
+.mini-calendar .fc-prev-button:hover,
+.mini-calendar .fc-next-button:hover {
+  color: #374151 !important;
+  opacity: 1 !important;
+}
+
+/* .mini-calendar .fc-prev-button svg,
+.mini-calendar .fc-next-button svg {
+  width: 10px !important;
+  height: 10px !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+  opacity: 1 !important;
+  display: block !important;
+} */
+
+.mini-calendar .fc-prev-button span,
+.mini-calendar .fc-next-button span {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ========================================================
+   CONTENEDOR Y VISTA DEL MINI CALENDARIO
+======================================================== */
+.mini-calendar-container {
+  width: 242px !important;
+  height: 365px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: transparent !important;
+}
+
+.mini-calendar {
+  width: 100% !important;
+  height: auto !important;
+  flex-grow: 1 !important;
+  min-height: 250px !important;
+}
+
+.mini-calendar .fc-view {
+  min-height: 250px !important;
+  display: block !important;
+}
+
+/* ========================================================
+   ESTILOS DE LA CUADRÍCULA Y CELDAS DE LOS DÍAS
+======================================================== */
+.mini-calendar .fc-daygrid-day {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.mini-calendar .fc-daygrid-day-frame {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mini-calendar .fc-scrollgrid,
+.mini-calendar .fc-scrollgrid table,
+.mini-calendar .fc-scrollgrid td,
+.mini-calendar .fc-scrollgrid th {
+  border: none !important;
+  border-color: transparent !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+}
+
+.mini-calendar .fc-daygrid-day-number {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  line-height: 24px !important;
+  border-radius: 50% !important;
+  font-size: 0.6rem !important;
+  font-weight: normal !important;
+  color: #000000 !important;
+}
+
+.mini-calendar .fc-scrollgrid td,
+.mini-calendar .fc-scrollgrid th {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+/* ========================================================
+   ESTILOS DEL ENCABEZADO (MES Y AÑO)
+======================================================== */
+.mini-calendar .fc-toolbar-title {
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  text-transform: capitalize !important;
+  color: #000000 !important;
+}
+
+/* ========================================================
+   ESTILOS PARA ESTADOS DE LOS DÍAS
+======================================================== */
+/* Día actual con fondo azul */
+.mini-calendar .mini-calendar-today .fc-daygrid-day-number {
+  background-color: #2563eb !important;
+  color: #fff !important;
+}
+
+/* Día seleccionado con azul claro */
+.mini-calendar .mini-calendar-selected:not(.mini-calendar-today) .fc-daygrid-day-number {
+  background-color: #93c5fd !important;
+  color: #fff !important;
+}
+
+/* Días con citas pendientes (amarillo pastel) */
+.mini-calendar .day-has-appointment-pendientes .fc-daygrid-day-frame {
+  background-color: #fff3cd !important;
+  color: #000000 !important;
+}
+
+/* Días con citas aprobadas (verde pastel) */
+.mini-calendar .day-has-appointment-aprobadas .fc-daygrid-day-frame {
+  background-color: #c8e6c9 !important;
+  color: #000000 !important;
+}
+
+/* Días con citas finalizadas (lila pastel) */
+.mini-calendar .day-has-appointment-finalizadas .fc-daygrid-day-frame {
+  background-color: #e6cce9 !important;
+  color: #000000 !important;
+}
+
+/* Días con reportes (rojo pastel) */
+.mini-calendar .day-has-appointment-reportes .fc-daygrid-day-frame {
+  background-color: #f8d7da !important;
+  color: #000000 !important;
+}
+
+/* Día actual sin citas (fondo blanco) */
+.mini-calendar
+  .fc-daygrid-day.fc-day-today:not(.day-has-appointment-pendientes):not(
+    .day-has-appointment-aprobadas
+  ):not(.day-has-appointment-finalizadas):not(.day-has-appointment-reportes)
+  .fc-daygrid-day-frame {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Días de otros meses */
+.mini-calendar .fc-day-other .fc-daygrid-day-number {
+  opacity: 1 !important;
+  color: #000000 !important;
+}
+
+/* Efecto hover en los números de los días */
+.mini-calendar .fc-daygrid-day:hover .fc-daygrid-day-number {
+  background-color: #e2e8f0 !important;
+}
+
+/* ========================================================
+   ESTILOS DE LOS ENCABEZADOS DE COLUMNA
+======================================================== */
+.mini-calendar .fc-col-header {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+  text-align: center !important;
+}
+
+.mini-calendar .fc-col-header-cell-cushion {
+  padding: 0 !important;
+  font-size: 0.6rem !important;
+  font-weight: normal !important;
+  color: #000000 !important;
+  text-align: center !important;
+}
+
+.mini-calendar .fc-col-header-cell {
+  display: table-cell !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  height: 25px !important;
+  font-size: 0.75rem !important;
+  font-weight: bold !important;
+  color: #374151 !important;
+  padding-bottom: 4px !important;
+}
+
+/* Para que la tabla de días ocupe el 100% del ancho */
+.mini-calendar .fc-daygrid,
+.mini-calendar .fc-daygrid-body,
+.mini-calendar .fc-daygrid-body-unbalanced,
+.mini-calendar .fc-scrollgrid-sync-table,
+.mini-calendar .fc-daygrid table {
+  width: 100% !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+}
+
+/* ========================================================
+   OVERRIDES EN LA TOOLBAR Y ENCABEZADOS
+======================================================== */
+.fc-header-toolbar {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.fc-toolbar-chunk {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.fc-button-group {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.fc-toolbar-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+/* ========================================================
+   OVERRIDES PARA MODO OSCURO
+======================================================== */
+/* Colores de botones en modo oscuro */
+html.dark .mini-calendar .fc-prev-button,
+html.dark .mini-calendar .fc-next-button {
+  color: #ffffff !important;
+}
+
+html.dark .mini-calendar .fc-prev-button:hover,
+html.dark .mini-calendar .fc-next-button:hover {
+  color: #d1d5db !important;
+}
+
+/* html.dark .mini-calendar .fc-prev-button svg,
+html.dark .mini-calendar .fc-next-button svg {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+} */
+
+/* Encabezados y números de día en modo oscuro */
+html.dark .mini-calendar .fc-daygrid-day-number {
+  color: #ffffff !important;
+}
+
+html.dark .mini-calendar .fc-toolbar-title {
+  color: #ffffff !important;
+}
+
+html.dark .mini-calendar .fc-col-header-cell-cushion {
+  color: #ffffff !important;
+}
+
+/* Para días con citas, mantener el texto en negro */
+html.dark .mini-calendar .day-has-appointment-pendientes .fc-daygrid-day-number,
+html.dark .mini-calendar .day-has-appointment-aprobadas .fc-daygrid-day-number,
+html.dark .mini-calendar .day-has-appointment-finalizadas .fc-daygrid-day-number,
+html.dark .mini-calendar .day-has-appointment-reportes .fc-daygrid-day-number {
+  color: #000000 !important;
+}
+
+/* Días de otros meses con citas en modo oscuro, manteniendo el texto en negro */
+html.dark .mini-calendar .fc-day-other.day-has-appointment-pendientes .fc-daygrid-day-number,
+html.dark .mini-calendar .fc-day-other.day-has-appointment-aprobadas .fc-daygrid-day-number,
+html.dark .mini-calendar .fc-day-other.day-has-appointment-finalizadas .fc-daygrid-day-number,
+html.dark .mini-calendar .fc-day-other.day-has-appointment-reportes .fc-daygrid-day-number {
+  color: #000000 !important;
+}
+
+/* Día actual sin citas en modo oscuro */
+html.dark
+  .mini-calendar
+  .fc-daygrid-day.fc-day-today:not(.day-has-appointment-pendientes):not(
+    .day-has-appointment-aprobadas
+  ):not(.day-has-appointment-finalizadas):not(.day-has-appointment-reportes)
+  .fc-daygrid-day-frame {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Días de otros meses en modo oscuro */
+html.dark .mini-calendar .fc-day-other .fc-daygrid-day-number {
+  color: #ffffff !important;
+}
+
+/* Efecto hover en modo oscuro */
+html.dark .mini-calendar .fc-daygrid-day:hover .fc-daygrid-day-number {
+  background-color: #374151 !important;
+}
+
+/* Forzar que todos los bordes en modo oscuro sean #1f2937 */
+html.dark .mini-calendar *,
+html.dark .mini-calendar-container {
+  border-color: #1f2937 !important;
+}

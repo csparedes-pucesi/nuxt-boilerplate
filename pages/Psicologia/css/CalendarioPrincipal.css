@@ -1,0 +1,620 @@
+/* ========================================================
+   A) CALENDARIO PRINCIPAL Y ELEMENTOS
+======================================================== */
+
+/* --- Posicionamiento y estructura general del calendario --- */
+.main-calendar {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto;
+  overflow: auto;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+/* ========================================================
+   1) CONTENEDOR GENERAL (Main Container) - Fondo Verde
+======================================================== */
+/* Contenedor principal que envuelve todo */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  overflow: visible;
+  background-color: #00ff00; /* Fondo verde */
+}
+
+/* ========================================================
+   3) CONTENEDOR DEL CALENDARIO (Calendar Container) - Borde Rojo
+======================================================== */
+/* Contenedor del calendario */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  flex-grow: 1;
+  overflow-y: auto; /* Contenedor scrollable vertical */
+}
+
+/* ========================================================
+   4) ENCABEZADO DEL CALENDARIO
+======================================================== */
+/* Encabezado del calendario */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #d2cbc4;
+  border-radius: 20px 20px 0 0; /* Bordes redondeados en la parte superior */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+/* ========================================================
+   5) CONTENIDO DEL CALENDARIO
+======================================================== */
+/* Contenedor donde se muestra el calendario */
+.calendar-content {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  flex-grow: 1;
+  overflow: auto;
+  align-items: stretch;
+  border-radius: 20px; /* Bordes redondeados */
+}
+
+/* ========================================================
+   8) ELEMENTOS INTERNOS DE FULLCALENDAR
+======================================================== */
+/* Ajustes en la altura y comportamiento de desplazamiento */
+.main-calendar .fc-timegrid,
+.main-calendar .fc-scroller {
+  height: auto !important;
+  max-height: none !important;
+  overflow: auto !important;
+}
+
+/* Vista semanal con ajuste de altura dinámica */
+.main-calendar .fc-timeGridWeek-view.fc-view.fc-timegrid {
+  height: auto !important;
+  overflow: auto !important;
+}
+
+/* ========================================================
+   9) AJUSTES DE FILAS Y COLUMNAS (SLOTS, DÍAS, ETC.)
+======================================================== */
+.main-calendar .fc-col-header-cell-cushion span.day-name {
+  font-size: 8.5pt; /* Tamaño absoluto */
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  color: #444746;
+}
+
+.main-calendar .fc-col-header-cell-cushion span.day-number {
+  font-size: 19.5pt; /* Tamaño absoluto */
+  font-family: Roboto, Arial, sans-serif;
+  color: #434645;
+}
+
+/* Estilos para el día actual */
+.main-calendar .fc-day-today .fc-col-header-cell-cushion span.day-name {
+  color: #0b57d0;
+}
+.main-calendar .fc-day-today .fc-col-header-cell-cushion span.day-number {
+  background-color: #0b57d0;
+  color: #fff;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  display: inline-block;
+}
+.main-calendar
+  .fc-col-header-cell:not(.fc-day-today)
+  .fc-col-header-cell-cushion:hover
+  span.day-number {
+  background-color: #ebedef;
+  color: #000;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  display: inline-block;
+  border: 3px solid #006596;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    border 0.2s ease-in-out;
+}
+
+/* Ajuste de altura de los slots de tiempo */
+.main-calendar .fc-timegrid-slot {
+  height: 40px;
+  border-top: 2px solid #dde3ea;
+}
+
+/* Ajuste del ancho mínimo de columnas de días */
+.main-calendar .fc-timegrid-col,
+.main-calendar .fc-daygrid-day {
+  min-width: auto;
+  border-left: 2px solid #dde3ea;
+}
+
+/* Configuración de la barra lateral con horas */
+.main-calendar .fc-timegrid-axis {
+  border-right: 2px solid #dde3ea;
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  font-size: 0.8rem;
+  text-align: right;
+  padding-right: 4px;
+}
+
+/* Línea divisoria entre columnas */
+.main-calendar .fc-timegrid-divider {
+  border-left: 2px solid #dde3ea;
+}
+
+/* Estilos para cada celda de slot de tiempo */
+.main-calendar .fc-timegrid-slot-frame {
+  border: 2px solid #dde3ea;
+}
+
+/* ========================================================
+   10) ESTILOS PARA CITAS Y DÍA ACTUAL
+======================================================== */
+.main-calendar .fc-daygrid-day.main-calendar-has-appointment-pendientes,
+.main-calendar .fc-timegrid-col.main-calendar-has-appointment-pendientes {
+  background-color: #fff9c4;
+}
+
+.main-calendar .fc-daygrid-day.main-calendar-has-appointment-aprobadas,
+.main-calendar .fc-timegrid-col.main-calendar-has-appointment-aprobadas {
+  background-color: #d0f0c0;
+}
+
+.main-calendar .fc-daygrid-day.main-calendar-has-appointment-finalizadas,
+.main-calendar .fc-timegrid-col.main-calendar-has-appointment-finalizadas {
+  background-color: #e1bee7;
+}
+
+.main-calendar .fc-daygrid-day.main-calendar-has-appointment-reportes,
+.main-calendar .fc-timegrid-col.main-calendar-has-appointment-reportes {
+  background-color: #ffcdd2;
+}
+
+.main-calendar
+  .fc-daygrid-day.fc-day-today:not(.main-calendar-has-appointment-pendientes):not(
+    .main-calendar-has-appointment-aprobadas
+  ):not(.main-calendar-has-appointment-finalizadas):not(.main-calendar-has-appointment-reportes) {
+  background-color: #ffffff;
+}
+
+/* ========================================================
+   11) ETIQUETAS DE HORA EN timeGrid
+======================================================== */
+.main-calendar .fc-timegrid-slot-label {
+  text-align: right;
+  color: #444746;
+  font-size: 8.5pt;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+/* ========================================================
+   12) TRANSPARENCIA Y AJUSTE INTERNO
+======================================================== */
+.main-calendar .fc-scrollgrid,
+.main-calendar .fc-daygrid,
+.main-calendar .fc-timegrid {
+  background-color: #ffffff;
+  overflow: visible;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+
+.main-calendar .fc-scrollgrid table,
+.main-calendar .fc-scrollgrid td,
+.main-calendar .fc-scrollgrid th {
+  background-color: transparent;
+}
+
+/* Reemplazar el amarillo del día actual con blanco */
+.fc-day-today {
+  background-color: #ffffff !important; /* Cambia el fondo a blanco */
+}
+
+/* Asegurar que las celdas de la cuadrícula del día actual también sean blancas */
+.fc-timegrid-slot.fc-day-today,
+.fc-day-today .fc-timegrid-slot-lane {
+  background-color: #ffffff !important;
+}
+
+/* ========================================================
+   13) ESTILOS PARA EVENTOS (CITAS) EN EL CALENDARIO
+======================================================== */
+.fc-event-title-single {
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.fc-event-title-multi {
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 0.68rem;
+  line-height: 1.2;
+}
+
+.fc-event-title-multi .fc-event-hour {
+  font-weight: bold;
+  color: #fff;
+  margin-top: 0.2em;
+}
+
+.fc-event-main,
+.fc-event-title {
+  white-space: normal !important;
+  background-color: #039be5;
+}
+
+/* ========================================================
+   14) ESTILOS PARA LA LÍNEA DE LA HORA
+======================================================== */
+.fc-timegrid-now-indicator-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #db372d;
+  pointer-events: none;
+  transform: translateY(-50%) translateZ(0);
+}
+.fc-timegrid-now-indicator-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #db372d;
+  border-radius: 50%;
+}
+
+/* Evitar que los días de otros meses aparezcan grises */
+.fc-day-other,
+.fc-day-other * {
+  opacity: 1 !important;
+  filter: none !important;
+  color: inherit !important;
+  background-color: transparent !important;
+}
+
+/* Centrar el número del día */
+.fc-daygrid-day-top {
+  text-align: center !important;
+}
+
+.fc-daygrid-day-top .fc-daygrid-day-number {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* ========================================================
+   15) MULTIMONTH VIEW (Vista de varios meses)
+======================================================== */
+
+/* A) Contenedor general de la vista multiMonthYear */
+.fc-multimonth-view {
+  background-color: #fff !important;
+  padding: 1rem 1rem 0 1rem !important;
+  margin: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* B) Cada "mes" como bloque */
+.fc-multimonth-month {
+  flex: 0 0 calc(22% - 0.4rem) !important;
+  background-color: #fff !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  border: 1px solid rgb(255, 255, 255) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  margin: 0.2rem 1.2rem !important;
+}
+
+/* Responsive: 3 columnas para viewport <= 1200px */
+@media (max-width: 1200px) {
+  .fc-multimonth-month {
+    flex: 0 0 calc(30% - 0.4rem) !important;
+    margin: 0.2rem 0.8rem !important;
+  }
+}
+
+/* Responsive: 2 columnas para viewport <= 800px */
+@media (max-width: 800px) {
+  .fc-multimonth-month {
+    flex: 0 0 calc(45% - 0.4rem) !important;
+    margin: 0.2rem 0.5rem !important;
+  }
+}
+
+/* C) Encabezado del mes */
+.fc-multimonth-header {
+  background: none !important;
+  padding: 0 !important;
+  text-align: left !important;
+  margin-top: 0.85rem !important;
+}
+@media (min-width: 1201px) {
+  .fc-multimonth-view > .fc-multimonth-month:nth-child(-n + 4) .fc-multimonth-header {
+    margin-top: 1rem !important;
+  }
+}
+@media (max-width: 1200px) and (min-width: 801px) {
+  .fc-multimonth-view > .fc-multimonth-month:nth-child(-n + 3) .fc-multimonth-header {
+    margin-top: 1rem !important;
+  }
+}
+@media (max-width: 800px) {
+  .fc-multimonth-view > .fc-multimonth-month:nth-child(-n + 2) .fc-multimonth-header {
+    margin-top: 1rem !important;
+  }
+}
+
+/* D) Título del mes */
+.fc-multimonth-title {
+  font-size: 0.8rem !important;
+  font-weight: bold !important;
+  text-transform: capitalize !important;
+  margin: 0 !important;
+  padding: 0.1rem 0 !important;
+  line-height: 1 !important;
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* E) Tablas de encabezado y días */
+.fc-multimonth-header-table,
+.fc-multimonth-daygrid-table {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.fc-multimonth-header,
+.fc-multimonth-header-table,
+.fc-multimonth-header-table th,
+.fc-multimonth-daygrid-table,
+.fc-multimonth-daygrid-table td,
+.fc-multimonth-daygrid-table tr,
+.fc-daygrid-day-frame,
+.fc-daygrid-day-top {
+  border: none !important;
+}
+
+/* Mostrar días de otros meses sin atenuación */
+.fc-day-other,
+.fc-day-other *,
+.fc-day-disabled,
+.fc-day-disabled * {
+  opacity: 1 !important;
+  filter: none !important;
+  visibility: visible !important;
+  color: inherit !important;
+  background-color: transparent !important;
+}
+.fc-day-disabled .fc-daygrid-day-top,
+.fc-day-other .fc-daygrid-day-top {
+  visibility: visible !important;
+}
+.fc-day-disabled .fc-daygrid-day-number,
+.fc-day-other .fc-daygrid-day-number {
+  visibility: visible !important;
+  display: inline !important;
+}
+
+/* Encabezados de días */
+.fc-col-header-cell-cushion {
+  font-size: 0.7rem !important;
+}
+@media (max-width: 1200px) {
+  .fc-multimonth-title,
+  .fc-col-header-cell-cushion,
+  .fc-daygrid-day-number {
+    font-size: 0.6rem !important;
+  }
+}
+@media (max-width: 800px) {
+  .fc-multimonth-title,
+  .fc-col-header-cell-cushion,
+  .fc-daygrid-day-number {
+    font-size: 0.5rem !important;
+  }
+}
+.fc-daygrid-day-number {
+  font-size: 0.7rem !important;
+}
+
+/* Enlaces "más" */
+.fc-daygrid-more-link,
+.fc-more-link {
+  font-size: 0.5rem !important;
+  font-weight: 600 !important;
+}
+
+/* Eventos individuales */
+.fc-daygrid-event .fc-event-title-single,
+.fc-daygrid-event .fc-event-title-single span {
+  font-size: 0.5rem !important;
+  font-weight: 600 !important;
+}
+
+/* ========================================================
+   14) ESTILOS PARA LA LÍNEA DE LA HORA
+======================================================== */
+.fc-timegrid-now-indicator-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #db372d;
+  pointer-events: none;
+  transform: translateY(-50%) translateZ(0);
+}
+.fc-timegrid-now-indicator-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #db372d;
+  border-radius: 50%;
+}
+
+/* ========================================================
+   OVERRIDES PARA DARK MODE
+   (Forzar que fondos, bordes y textos se ajusten en modo oscuro)
+======================================================== */
+
+/* Fondos, bordes y texto global para elementos principales */
+html.dark .main-calendar {
+  background-color: #1f2937 !important;
+  border-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+html.dark .main-container {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+html.dark .calendar-container {
+  border-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+html.dark .calendar-header {
+  background-color: #1f2937 !important;
+  border-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+html.dark .calendar-content {
+  background-color: #1f2937 !important;
+  border-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Elementos internos de FullCalendar */
+html.dark .main-calendar .fc-timegrid,
+html.dark .main-calendar .fc-scroller,
+html.dark .main-calendar .fc-scrollgrid,
+html.dark .main-calendar .fc-daygrid {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+html.dark .main-calendar .fc-timegrid-slot {
+  border-top-color: #1f2937 !important;
+}
+html.dark .main-calendar .fc-timegrid-col,
+html.dark .main-calendar .fc-daygrid-day {
+  border-left-color: #1f2937 !important;
+}
+html.dark .main-calendar .fc-timegrid-axis {
+  border-right-color: #1f2937 !important;
+}
+html.dark .main-calendar .fc-timegrid-divider {
+  border-left-color: #1f2937 !important;
+}
+html.dark .main-calendar .fc-timegrid-slot-frame {
+  border-color: #1f2937 !important;
+}
+
+/* Bordes en tablas internas */
+html.dark .main-calendar .fc-scrollgrid,
+html.dark .main-calendar .fc-scrollgrid table,
+html.dark .main-calendar .fc-scrollgrid td,
+html.dark .main-calendar .fc-scrollgrid th {
+  border-color: #0e4385 !important;
+}
+
+/* Reemplazar el amarillo del día actual con blanco */
+.fc-day-today {
+  background-color: #ffffff !important;
+}
+
+/* Asegurar que las celdas del día actual sean blancas */
+.fc-timegrid-slot.fc-day-today,
+.fc-day-today .fc-timegrid-slot-lane {
+  background-color: #ffffff !important;
+}
+
+/* Vista MultiMonth */
+html.dark .fc-multimonth-view,
+html.dark .fc-multimonth-month,
+html.dark .fc-multimonth-header,
+html.dark .fc-multimonth-header-table,
+html.dark .fc-multimonth-daygrid-table {
+  background-color: #1f2937 !important;
+  border-color: #1f2937 !important;
+}
+
+/* Forzar bordes en elementos implicados */
+html.dark .main-calendar,
+html.dark .main-container,
+html.dark .calendar-container,
+html.dark .calendar-header,
+html.dark .calendar-content,
+html.dark .main-calendar .fc-timegrid,
+html.dark .main-calendar .fc-scroller,
+html.dark .main-calendar .fc-scrollgrid,
+html.dark .main-calendar .fc-daygrid,
+html.dark .main-calendar .fc-timegrid-slot,
+html.dark .main-calendar .fc-timegrid-col,
+html.dark .main-calendar .fc-daygrid-day,
+html.dark .main-calendar .fc-timegrid-axis,
+html.dark .main-calendar .fc-timegrid-divider,
+html.dark .main-calendar .fc-timegrid-slot-frame {
+  border-color: #1f2937 !important;
+}
+
+/* Texto global en modo oscuro */
+html.dark {
+  color: #ffffff !important;
+}
+
+/* Para días con citas, mantener texto en negro */
+html.dark .main-calendar .fc-daygrid-day.main-calendar-has-appointment-pendientes,
+html.dark .main-calendar .fc-timegrid-col.main-calendar-has-appointment-pendientes,
+html.dark .main-calendar .fc-daygrid-day.main-calendar-has-appointment-aprobadas,
+html.dark .main-calendar .fc-timegrid-col.main-calendar-has-appointment-aprobadas,
+html.dark .main-calendar .fc-daygrid-day.main-calendar-has-appointment-finalizadas,
+html.dark .main-calendar .fc-timegrid-col.main-calendar-has-appointment-finalizadas,
+html.dark .main-calendar .fc-daygrid-day.main-calendar-has-appointment-reportes,
+html.dark .main-calendar .fc-timegrid-col.main-calendar-has-appointment-reportes {
+  color: #000000 !important;
+}
+html.dark .fc-timegrid-slot-label-cushion.fc-scrollgrid-shrink-cushion {
+  color: #ffffff !important;
+}
+
+html.dark .fc-day-today {
+  background-color: #1f2937 !important;
+}
+
+/* Asegurar que las celdas del día actual en el grid sean oscuras */
+html.dark .fc-timegrid-slot.fc-day-today,
+html.dark .fc-day-today .fc-timegrid-slot-lane {
+  background-color: #1f2937 !important;
+}

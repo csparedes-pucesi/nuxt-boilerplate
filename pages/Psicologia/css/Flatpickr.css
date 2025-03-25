@@ -1,0 +1,158 @@
+.flatpickr-calendar {
+  transform: scale(0.8) translateY(0.5rem) !important;
+  transform-origin: top left !important;
+  border-radius: 1.5rem !important; /* 24px aproximado */
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2) !important;
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.dark .flatpickr-calendar {
+  border: 0.1875rem solid #0e4385 !important; /* Color azul oscuro */
+  box-shadow: 0 0.125rem 0.5rem rgba(255, 255, 255, 0.2) !important;
+  background: #1f2937 !important; /* Color gris oscuro */
+  color: #ffffff !important; /* Texto en blanco */
+}
+
+.dark .flatpickr-calendar *,
+.dark .flatpickr-day,
+.dark .flatpickr-months,
+.dark .flatpickr-weekday {
+  color: #ffffff !important; /* Asegura que todo el texto sea blanco */
+}
+
+.dark .flatpickr-day.today {
+  background: #0e4385 !important; /* Resaltar el día actual con azul oscuro */
+  color: #ffffff !important; /* Asegurar que el texto sea blanco */
+}
+
+.dark .flatpickr-day.selected {
+  background: #0e4385 !important; /* Color de selección */
+  color: #ffffff !important; /* Texto en blanco */
+}
+
+.dark .flatpickr-next-month svg,
+.dark .flatpickr-prev-month svg {
+  fill: #ffffff !important; /* Hace que los íconos sean blancos */
+  stroke: #ffffff !important; /* Asegura que cualquier borde también sea blanco */
+}
+
+/* Ajusta el ancho del DDL de meses al contenido */
+.flatpickr-monthDropdown-months {
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  width: auto !important; /* Se ajusta automáticamente al contenido */
+  min-width: unset !important; /* Evita que tenga un ancho mínimo forzado */
+  padding: 2px 5px !important; /* Reduce el padding para compactarlo */
+}
+
+.dark .flatpickr-monthDropdown-months option {
+  background-color: #1f2937 !important; /* Fondo oscuro para opciones */
+  color: #ffffff !important; /* Texto en blanco */
+}
+
+/* Reducir tamaño del texto del dropdown de meses y del año */
+.flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+  font-size: 1rem !important; /* Ajuste del tamaño del texto */
+}
+
+/* Ajuste para modo oscuro */
+.dark .flatpickr-monthDropdown-months,
+.dark .flatpickr-current-month input.cur-year {
+  font-size: 1rem !important; /* Mismo ajuste en dark mode */
+}
+
+/* Hace que el contenedor del dropdown tenga bordes redondeados SIN bordes visibles */
+.dark .flatpickr-monthDropdown-months {
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+  border: none !important; /* Elimina cualquier borde */
+  outline: none !important; /* Evita el borde azul al hacer clic */
+  box-shadow: none !important; /* Evita cualquier sombra que pueda aparecer */
+}
+
+/* Asegura que el dropdown y sus opciones usen la misma fuente */
+.flatpickr-monthDropdown-months,
+.flatpickr-monthDropdown-months select,
+.flatpickr-monthDropdown-months option {
+  font-family: 'Arial', sans-serif !important; /* O cambia a la fuente que usas */
+  font-size: 1rem !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Modo oscuro */
+.dark .flatpickr-monthDropdown-months,
+.dark .flatpickr-monthDropdown-months select,
+.dark .flatpickr-monthDropdown-months option {
+  font-family: 'Arial', sans-serif !important;
+  font-size: 1rem !important;
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Ajusta el borde del dropdown para que se vea mejor */
+.flatpickr-monthDropdown-months select {
+  border: 1px solid #ccc !important;
+  border-radius: 0.5rem !important;
+  padding: 5px;
+}
+
+/* Elimina el borde (focus) al hacer click en el dropdown */
+.flatpickr-monthDropdown-months select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Asegura que las opciones dentro del dropdown tengan fondo correcto */
+.flatpickr-monthDropdown-months option {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Modo oscuro para las opciones del dropdown */
+.dark .flatpickr-monthDropdown-months option {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+}
+
+/* Ajuste para modo oscuro */
+.dark .flatpickr-monthDropdown-months option {
+  font-size: 0.7rem !important; /* Ajuste en modo oscuro */
+  font-family: inherit !important; /* Asegura coherencia de fuente */
+}
+
+/* Ajuste para modo claro */
+.flatpickr-monthDropdown-months option {
+  font-size: 0.8rem !important; /* Ajuste en modo claro */
+  font-family: inherit !important; /* Asegura coherencia de fuente */
+}
+/* Eliminar bordes y resaltado del input de año */
+.numInputWrapper .cur-year {
+  border-radius: 0.55rem !important;
+
+  border: none !important; /* Elimina el borde */
+  outline: none !important; /* Evita el borde azul al hacer clic */
+  box-shadow: none !important; /* Evita sombras alrededor */
+  background: transparent !important; /* Evita cambios de color no deseados */
+}
+
+/* Eliminar bordes en modo oscuro */
+.dark .numInputWrapper .cur-year {
+  border-radius: 0.55rem !important;
+
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+/* Cambiar color de las flechas en modo oscuro */
+.dark .arrowUp,
+.dark .arrowDown {
+  border-color: white !important; /* Cambia el color del borde */
+  background-color: white !important; /* Cambia el color del relleno */
+}

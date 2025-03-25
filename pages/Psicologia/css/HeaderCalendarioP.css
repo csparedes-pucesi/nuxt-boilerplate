@@ -1,0 +1,378 @@
+.search-advanced-panel { 
+  /* Ancho igual al contenedor padre */
+  width: 100%;
+
+  /* Apariencia similar a la barra */
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* Espaciado interno en unidades relativas */
+  padding: 1em;
+
+  /* Altura máxima y scroll */
+  max-height: 20rem;
+  overflow-y: auto;
+
+  /* Tamaño y color de texto general para el panel */
+  font-size: 0.8rem;
+  color: #000000;
+}
+
+/* Aseguramos que los elementos internos hereden el tamaño y color de fuente */
+.search-advanced-panel label,
+.search-advanced-panel input,
+.search-advanced-panel select,
+.search-advanced-panel option,
+.search-advanced-panel button {
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Márgenes y paddings relativos para los labels y campos */
+.search-advanced-panel label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.search-advanced-panel input,
+.search-advanced-panel select,
+.search-advanced-panel button {
+  padding: 0.3em 0.5em;
+  line-height: 1.2; /* Ajusta según tu preferencia */
+}
+
+/* Estilos para modo oscuro */
+.dark .search-advanced-panel {
+  background-color: #1f2937;
+  border-color: #0e4385;
+  color: #ffffff;
+}
+
+/* En modo oscuro, los labels, inputs, selects y botones tendrán fondo #0e4385 */
+.dark .search-advanced-panel input,
+.dark .search-advanced-panel select,
+.dark .search-advanced-panel button {
+  border: 2px solid #0e4385 ;
+  background-color: #1f2937;
+  color: #ffffff; /* Texto en blanco para mejor contraste */
+}
+
+/* Si los inputs tienen un borde en el modo oscuro */
+.dark .search-advanced-panel input::placeholder {
+  color: #d1d5db; /* Placeholder en gris claro */
+}
+
+.search-bar {
+  /* Tamaño y espaciado */
+  height: 2.5rem;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem; /* Equivale a px-2 en Tailwind */
+
+  /* Layout y comportamiento */
+  display: flex;           /* flex */
+  align-items: center;     /* items-center */
+  justify-content: center; /* justify-center */
+  position: relative;      /* relative */
+  cursor: pointer;         /* cursor-pointer */
+
+  /* Apariencia */
+  background-color: #ffffff; /* bg-white */
+  border: 1px solid #e5e7eb; /* border (color base) */
+  border-radius: 1.5rem;     /* rounded-3xl en Tailwind */
+  max-width: 36rem;          /* max-w-xl (36rem) */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+}
+
+/* Modo oscuro (si usas la clase .dark en <html> o en un contenedor) */
+.dark .search-bar {
+  background-color: #1f2937; /* dark:bg-gray-800 */
+  border-color: #0e4385;     /* Ajusta si quieres un color distinto en modo oscuro */
+}
+
+.header-calendario-container {
+  height: 4.5rem;
+  position: relative;      /* relative */
+
+}
+
+/* ==================================================
+   1) Botones prev/next en el header (estilo y hover)
+   ================================================== */
+
+/* 1.1. Estilo general de botones prev y next en el header */
+.header-calendario .header-prev-button,
+.header-calendario .header-next-button {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  font-size: 1rem !important; /* Tamaño de fuente */
+  padding: 8px !important; /* Espacio interno */
+  width: auto !important;
+  height: auto !important;
+  min-width: 36px !important; /* Tamaño mínimo */
+  min-height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+}
+
+/* 1.2. Hover en botones prev y next */
+.header-calendario .header-prev-button:hover,
+.header-calendario .header-next-button:hover {
+  color: #374151 !important;
+  opacity: 1 !important;
+}
+
+/* 1.3. Ajuste del SVG para que se vea como < > con trazo y sin relleno */
+/* .header-calendario .header-prev-button svg,
+.header-calendario .header-next-button svg { */
+  /* width: 24px !important; */
+  /* height: 24px !important; */
+  /* fill: none !important; Sin relleno */
+  /* stroke: #000000 !important; Trazo negro */
+  /* stroke-width: 2 !important; Grosor de la línea */
+  /* stroke-linecap: butt !important; Extremos “cuadrados” */
+  /* stroke-linejoin: miter !important; Uniones “pico” */
+  /* display: block !important; */
+  /* opacity: 1 !important; */
+/* } */
+
+/* ==================================================
+   2) Botón "Hoy" en el header (estilo, hover y estado deshabilitado)
+   ================================================== */
+
+/* 2.1. Estilo general del botón "Hoy" */
+.header-calendario .header-today-button {
+  background: #f8f9fa !important;
+  border: 1px solid #000000 !important;
+  color: #000000 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 50px !important;
+  padding: 6px 9px !important; /* Disminuido solo un pelín el padding horizontal */
+  min-width: 75px !important; /* Un pelín menos ancho */
+  min-height: 30px !important;
+  box-shadow: none !important;
+}
+
+/* 2.2. Hover en el botón "Hoy" */
+.header-calendario .header-today-button:hover {
+  background: #e2e8f0 !important;
+  border-color: #000000 !important;
+  opacity: 0.9 !important;
+}
+
+/* 2.3. Estado deshabilitado del botón "Hoy" */
+.header-calendario .header-today-button:disabled {
+  opacity: 1 !important;
+  background: #f8f9fa !important;
+  color: #000000 !important;
+}
+
+/* ==================================================
+   3) Botón Dropdown (mismo estilo que "Hoy") - Versión 1
+   ================================================== */
+
+/* 3.1. Estilo general del botón dropdown - Versión 1 */
+.header-calendario .header-view-dropdown-button {
+  background: #f8f9fa !important;
+  border: 1px solid #000000 !important;
+  color: #000000 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 50px !important;
+  padding: 6px 30px !important;
+  width: 115px !important; /* Fuerza el ancho del botón */
+  min-height: 30px !important;
+  box-shadow: none !important;
+
+  /* Para alinear ícono y texto en una misma línea */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px;
+}
+
+/* 3.2. Hover del botón dropdown - Versión 1 */
+.header-calendario .header-view-dropdown-button:hover {
+  background: #e2e8f0 !important;
+  border-color: #000000 !important;
+  opacity: 0.9 !important;
+}
+
+/* 3.3. Estado deshabilitado del botón dropdown - Versión 1 */
+.header-calendario .header-view-dropdown-button:disabled {
+  opacity: 1 !important;
+  background: #f8f9fa !important;
+  color: #000000 !important;
+}
+
+/* 3.4. Estilo para el ícono de la flecha dentro del botón dropdown - Versión 1 */
+.header-calendario .header-view-dropdown-button svg {
+  width: 16px !important;
+  height: 16px !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* ==================================================
+   4) Botón Dropdown (mismo estilo que "Hoy") - Versión 2
+   ================================================== */
+
+/* 4.1. Estilo general del botón dropdown - Versión 2 */
+.header-calendario .header-view-dropdown-button {
+  background: #f8f9fa !important;
+  border: 1px solid #000000 !important;
+  color: #000000 !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 50px !important;
+  padding: 6px 12px !important;
+  min-width: 60px !important;
+  min-height: 30px !important;
+  box-shadow: none !important;
+
+  /* Para alinear ícono y texto en una misma línea */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px; /* Pequeño espacio entre texto y flecha */
+}
+
+/* 4.2. Hover del botón dropdown - Versión 2 */
+.header-calendario .header-view-dropdown-button:hover {
+  background: #e2e8f0 !important;
+  border-color: #000000 !important;
+  opacity: 0.9 !important;
+}
+
+/* ==================================================
+   5) Contenedor y opciones del menú desplegable (Dropdown)
+   ================================================== */
+
+/* 5.1. Contenedor del menú desplegable */
+.header-calendario .header-view-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0; /* Ancla al borde derecho del contenedor */
+  left: auto; /* Anulamos left para no generar conflicto */
+  z-index: 999;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+  padding: 4px 0;
+}
+
+/* 5.2. Estilo de cada opción dentro del dropdown */
+.header-calendario .header-view-dropdown-item {
+  display: flex; /* Para alinear etiqueta y shortcut */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: #1f1f1f;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* 5.3. Hover de cada opción */
+.header-calendario .header-view-dropdown-item:hover {
+  background-color: #e2e8f0;
+}
+
+/* 5.4. Estilo para la abreviatura (D, W, M) a la derecha */
+.header-calendario .header-view-dropdown-item .shortcut {
+  color: #6b7280; /* Gris suave */
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
+/* ==================================================
+   6) Título del header
+   ================================================== */
+.header-currentTitle {
+  font-size: 1.5rem;
+  color: #1f1f1f;
+  margin: 0;
+  padding: 0;
+  font-family: 'Google Sans', sans-serif; /* Usa Google Sans o una alternativa */
+}
+
+/* ==================================================
+   7) OVERRIDES PARA DARK MODE
+   ================================================== */
+
+/* 7.1. Botones prev/next en dark mode */
+html.dark .header-calendario .header-prev-button,
+html.dark .header-calendario .header-next-button {
+  color: #ffffff !important;
+}
+
+html.dark .header-calendario .header-prev-button:hover,
+html.dark .header-calendario .header-next-button:hover {
+  color: #d1d5db !important;
+}
+
+/* 7.2. SVG en dark mode para botones prev/next */
+/* html.dark .header-calendario .header-prev-button svg,
+html.dark .header-calendario .header-next-button svg {
+  stroke: #ffffff !important;
+} */
+
+/* 7.3. Botón "Hoy" en dark mode */
+html.dark .header-calendario .header-today-button {
+  background: #374151 !important;
+  border: 1px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+html.dark .header-calendario .header-today-button:hover {
+  background: #475569 !important;
+}
+
+/* 7.4. Botón dropdown en dark mode */
+html.dark .header-calendario .header-view-dropdown-button {
+  background: #374151 !important;
+  border: 1px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+html.dark .header-calendario .header-view-dropdown-button:hover {
+  background: #475569 !important;
+}
+
+/* 7.5. Menú dropdown en dark mode */
+html.dark .header-calendario .header-view-dropdown-menu {
+  background: #1f2937 !important;
+  border: 1px solid #ffffff !important;
+}
+
+/* 7.6. Opciones dentro del menú dropdown en dark mode */
+html.dark .header-calendario .header-view-dropdown-item {
+  color: #ffffff !important;
+}
+
+html.dark .header-calendario .header-view-dropdown-item:hover {
+  background: #374151 !important;
+}
+
+/* 7.7. Título en dark mode */
+html.dark .header-currentTitle {
+  color: #ffffff !important;
+}
+
+/* 7.8. SVG del botón dropdown en dark mode */
+html.dark .header-view-dropdown-button svg {
+  stroke: #ffffff !important;
+}
