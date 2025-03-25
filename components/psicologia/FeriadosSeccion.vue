@@ -39,7 +39,7 @@ import TableBodyComponent from '@/components/table/TableBodyComponent.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import AgregarFeriadoModal from '@/components/psicologia/AgregarFeriadoModal.vue'
 import BaseButtonModuloPsicopedagogo from '~/components/global/main-button-psicologia.vue'
-import BaseSwitchButtonModuloPsicopedagogo from '@/components/global/BaseSwitchButtonModuloPsicopedagogo.vue'
+import BaseSwitchButtonModuloPsicopedagogo from '~/components/global/main-bswitch-psicologia.vue'
 
 // Definición del type alias ExtendedColumnDef
 interface CustomColumnMeta {
