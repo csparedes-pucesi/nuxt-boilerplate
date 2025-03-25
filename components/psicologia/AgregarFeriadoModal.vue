@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza v-model para controlar la visibilidad del modal -->
-  <ModalSlotComponent
+  <modal-slot
     v-model="localModelValue"
     :title="title || 'Agregar Feriado'"
     modal-classes="relative w-1/2 h-1/2 mx-auto my-10"
@@ -51,7 +51,7 @@
         </div>
       </form>
     </div>
-  </ModalSlotComponent>
+  </modal-slot>
 </template>
 <script setup lang="ts">
 import { reactive, computed } from 'vue'
@@ -61,7 +61,6 @@ import type {
   GetFeriadosDTO,
   PostFeriadosDTO,
 } from '@/types/psicologia/Feriados.dto'
-import ModalSlotComponent from '@/components/global/ModalSlot.vue'
 
 interface Props {
   modelValue: boolean

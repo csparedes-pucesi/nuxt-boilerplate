@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza v-model para controlar la visibilidad del modal -->
-  <GlobalModalSlot
+  <modal-slot
     v-model="localModelValue"
     :title="title || 'Agregar Área de Conocimiento'"
     modal-classes="relative w-1/2 h-auto mx-auto my-10 rounded-2xl"
@@ -25,7 +25,7 @@
             required
             placeholder="Nombre del área"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-100"
-          >
+          />
         </div>
         <div>
           <label
@@ -40,7 +40,7 @@
             type="text"
             placeholder="Descripción del área"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-100"
-          >
+          />
         </div>
         <div class="text-right">
           <button
@@ -52,7 +52,7 @@
         </div>
       </form>
     </div>
-  </GlobalModalSlot>
+  </modal-slot>
 </template>
 
 <script setup lang="ts">

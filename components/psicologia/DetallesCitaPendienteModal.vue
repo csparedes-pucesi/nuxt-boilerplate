@@ -1,5 +1,5 @@
 <template>
-  <ModalSlotComponent
+  <modal-slot
     :model-value="isOpen"
     title="Gestionar la Cita"
     modal-classes="relative w-1/2 h-auto mx-auto my-10 rounded-2xl"
@@ -137,13 +137,12 @@
         </button>
       </div>
     </footer>
-  </ModalSlotComponent>
+  </modal-slot>
 </template>
 
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
-import ModalSlotComponent from '@/components/global/ModalSlot.vue'
 import type { Cita } from '@/types/psicologia/psicologia.dto'
 
 defineProps({

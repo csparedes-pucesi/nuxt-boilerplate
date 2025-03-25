@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza v-model para controlar la visibilidad del modal -->
-  <ModalSlotComponent
+  <modal-slot
     v-model="localModelValue"
     :title="title || 'Agregar Especialidad'"
     modal-classes="relative w-1/2 h-auto mx-auto my-10"
@@ -51,14 +51,13 @@
         </div>
       </form>
     </div>
-  </ModalSlotComponent>
+  </modal-slot>
 </template>
 
 <script setup lang="ts">
 import { reactive, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import Swal from 'sweetalert2'
-import ModalSlotComponent from '@/components/global/ModalSlot.vue'
 import { useCitasConfiguracionEspecialidades } from '~/composables/psicologia/useCitasConfiguracionEspecialidades'
 import type {
   PostEspecialidadesAreaConocimientoDTO,
