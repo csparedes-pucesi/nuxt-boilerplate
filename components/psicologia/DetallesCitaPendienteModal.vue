@@ -91,7 +91,7 @@
       >
         <!-- Botón Aceptar -->
         <button
-        class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
+          class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
           @click="aceptarCita"
         >
           <UIcon name="i-lucide-heart" class="w-6 h-6 text-red-500" />
@@ -100,7 +100,7 @@
 
         <!-- Botón Rechazar -->
         <button
-        class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
+          class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
           @click="rechazarCita"
         >
           <UIcon
@@ -112,7 +112,7 @@
 
         <!-- Botón Reagendar -->
         <button
-        class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
+          class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
           @click="reagendarCita"
         >
           <UIcon
@@ -126,7 +126,7 @@
       <!-- Botón Cerrar -->
       <div class="px-4 py-3 flex justify-end">
         <button
-        class="bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 px-4 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
+          class="bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 px-4 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
           @click="closeModal"
         >
           <UIcon
@@ -143,7 +143,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
-import ModalSlotComponent from '@/components/Global/ModalSlot.vue'
+import ModalSlotComponent from '@/components/global/ModalSlot.vue'
 import type { Cita } from '@/types/psicologia/psicologia.dto'
 
 defineProps({

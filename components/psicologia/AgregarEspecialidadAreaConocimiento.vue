@@ -24,7 +24,7 @@
             required
             placeholder="Nombre de la especialidad"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-100"
-          >
+          />
         </div>
         <div>
           <label
@@ -39,7 +39,7 @@
             type="text"
             placeholder="Descripción de la especialidad"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-100"
-          >
+          />
         </div>
         <div class="text-right">
           <button
@@ -58,7 +58,7 @@
 import { reactive, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import Swal from 'sweetalert2'
-import ModalSlotComponent from '@/components/Global/ModalSlot.vue'
+import ModalSlotComponent from '@/components/global/ModalSlot.vue'
 import { useCitasConfiguracionEspecialidades } from '~/composables/psicologia/useCitasConfiguracionEspecialidades'
 import type {
   PostEspecialidadesAreaConocimientoDTO,

@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza GlobalSection como contenedor global -->
-  <GlobalSection>
+  <global-section>
     <!-- Contenido interno sin contenedores adicionales -->
     <ul class="space-y-4">
       <li
@@ -16,14 +16,13 @@
         </div>
       </li>
     </ul>
-  </GlobalSection>
+  </global-section>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import type { GetDiasDTO } from '@/types/psicologia/DiaAtencion.dto'
 import { useCitasConfiguracionDiasAtencion } from '~/composables/psicologia/useCitasConfiguracionDiasAtencion'
-import GlobalSection from '@/components/Global/GlobalSection.vue'
 
 const dias = ref<GetDiasDTO[]>([])
 const { getDiasAtencion } = useCitasConfiguracionDiasAtencion()

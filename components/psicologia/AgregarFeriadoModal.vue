@@ -24,7 +24,7 @@
             type="date"
             required
             class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-100"
-          >
+          />
         </div>
         <div>
           <label
@@ -39,7 +39,7 @@
             type="text"
             placeholder="Motivo o descripción"
             class="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-gray-100"
-          >
+          />
         </div>
         <div class="text-right">
           <button
@@ -61,7 +61,7 @@ import type {
   GetFeriadosDTO,
   PostFeriadosDTO,
 } from '@/types/psicologia/Feriados.dto'
-import ModalSlotComponent from '@/components/Global/ModalSlot.vue'
+import ModalSlotComponent from '@/components/global/ModalSlot.vue'
 
 interface Props {
   modelValue: boolean

@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza GlobalSection como contenedor único -->
-  <GlobalSection>
+  <global-section>
     <div class="flex justify-between items-center mb-4">
       <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">
         Listado de Feriados
@@ -27,7 +27,7 @@
       @created="handleCreated"
       @feriado-agregado-modal="fetchFeriados"
     />
-  </GlobalSection>
+  </global-section>
 </template>
 
 <script setup lang="ts">
@@ -38,9 +38,8 @@ import { useCitasConfiguracionFeriados } from '~/composables/psicologia/useCitas
 import TableBodyComponent from '@/components/table/TableBodyComponent.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import AgregarFeriadoModal from '@/components/psicologia/AgregarFeriadoModal.vue'
-import BaseButtonModuloPsicopedagogo from '@/components/Global/BaseButtonModuloPsicopedagogo.vue'
-import GlobalSection from '@/components/Global/GlobalSection.vue'
-import BaseSwitchButtonModuloPsicopedagogo from '@/components/Global/BaseSwitchButtonModuloPsicopedagogo.vue'
+import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
+import BaseSwitchButtonModuloPsicopedagogo from '@/components/global/BaseSwitchButtonModuloPsicopedagogo.vue'
 
 // Definición del type alias ExtendedColumnDef
 interface CustomColumnMeta {

@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza GlobalSection como contenedor único -->
-  <GlobalSection>
+  <global-section>
     <!-- Contenido sin contenedores adicionales -->
     <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
       {{ isEditing ? 'Editar Horario' : 'Horario' }}
@@ -20,7 +20,7 @@
             type="time"
             :readonly="!isEditing"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
-          >
+          />
         </div>
         <div>
           <label
@@ -35,7 +35,7 @@
             type="time"
             :readonly="!isEditing"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
-          >
+          />
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -52,7 +52,7 @@
             type="number"
             :readonly="!isEditing"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
-          >
+          />
         </div>
         <div>
           <label
@@ -67,7 +67,7 @@
             type="number"
             :readonly="!isEditing"
             class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-indigo-500 focus:border-indigo-500"
-          >
+          />
         </div>
       </div>
       <div
@@ -98,7 +98,7 @@
         />
       </div>
     </form>
-  </GlobalSection>
+  </global-section>
 </template>
 
 <script setup lang="ts">
@@ -109,8 +109,7 @@ import type {
   PutHorarioDTO,
 } from '@/types/psicologia/HorarioEstandar.dto'
 import { useCitasConfiguracionHorario } from '~/composables/psicologia/useCitasConfiguracionHorario'
-import BaseButtonModuloPsicopedagogo from '@/components/Global/BaseButtonModuloPsicopedagogo.vue'
-import GlobalSection from '@/components/Global/GlobalSection.vue'
+import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
 
 const isEditing = ref(false)
 const horario = reactive<GetHorarioDTO>({

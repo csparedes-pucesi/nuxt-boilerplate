@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza GlobalSection como contenedor único -->
-  <GlobalSection>
+  <global-section>
     <div v-if="areas.length">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-100">
@@ -32,7 +32,7 @@
       v-model="showModal"
       @created="handleCreated"
     />
-  </GlobalSection>
+  </global-section>
 </template>
 
 <script setup lang="ts">
@@ -43,8 +43,7 @@ import { useEspecialidadStore } from '~/stores/psicologia/especialidadStore'
 import AgregarAreaConocimientoModal from '@/components/psicologia/AgregarAreaConocimientoModal.vue'
 import TableBodyComponent from '@/components/table/TableBodyComponent.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
-import BaseButtonModuloPsicopedagogo from '@/components/Global/BaseButtonModuloPsicopedagogo.vue'
-import GlobalSection from '@/components/Global/GlobalSection.vue'
+import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
 
 const { getAreasConocimiento } = useCitasConfiguracionAreasConocimiento()
 

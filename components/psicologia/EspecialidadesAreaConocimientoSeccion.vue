@@ -1,6 +1,6 @@
 <template>
   <!-- Se utiliza GlobalSection como contenedor único -->
-  <GlobalSection>
+  <global-section>
     <!-- Encabezado con título y botón para agregar especialidad -->
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-100">
@@ -24,7 +24,7 @@
       v-model="showModal"
       @created="handleCreated"
     />
-  </GlobalSection>
+  </global-section>
 </template>
 
 <script setup lang="ts">
@@ -37,8 +37,7 @@ import { useCitasConfiguracionEspecialidades } from '~/composables/psicologia/us
 import type { ColumnDef } from '@tanstack/vue-table'
 import { useEspecialidadStore } from '~/stores/psicologia/especialidadStore'
 import AgregarEspecialidadAreaConocimiento from '@/components/psicologia/AgregarEspecialidadAreaConocimiento.vue'
-import BaseButtonModuloPsicopedagogo from '@/components/Global/BaseButtonModuloPsicopedagogo.vue'
-import GlobalSection from '@/components/Global/GlobalSection.vue'
+import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
 
 // Extraemos las funciones para obtener y crear especialidades
 const { getEspecialidades } = useCitasConfiguracionEspecialidades()

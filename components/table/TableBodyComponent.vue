@@ -17,7 +17,7 @@ import {
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import Filter from './Filter.vue'
 import DebouncedInput from './DebouncedInput.vue'
-import LocalMainButtonComponent from '@/components/Global/LocalMainButtonComponent.vue'
+import LocalMainButtonComponent from '@/components/global/LocalMainButtonComponent.vue'
 
 // Agregamos el nuevo prop opcional: dropdownColumns
 const props = withDefaults(
@@ -424,7 +424,7 @@ function goToNextPage() {
                       ($event.target as HTMLInputElement).value
                     )
                   "
-                >
+                />
               </template>
               <template v-else>
                 <FlexRender
@@ -500,7 +500,7 @@ function goToNextPage() {
             :value="goToPageNumber"
             class="border p-1 rounded w-16 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
             @change="handleGoToPage"
-          >
+          />
         </span>
         <select
           :value="table.getState().pagination.pageSize"
