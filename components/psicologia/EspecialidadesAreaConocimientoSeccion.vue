@@ -7,7 +7,7 @@
         Especialidades Área {{ areaNombre }}
       </h2>
       <!-- Botón AGREGAR ESPECIALIDAD reemplazado -->
-      <BaseButtonModuloPsicopedagogo
+      <main-button-psicologia
         text="AGREGAR ESPECIALIDAD"
         action="agregar"
         type="button"
@@ -37,7 +37,6 @@ import { useCitasConfiguracionEspecialidades } from '~/composables/psicologia/us
 import type { ColumnDef } from '@tanstack/vue-table'
 import { useEspecialidadStore } from '~/stores/psicologia/especialidadStore'
 import AgregarEspecialidadAreaConocimiento from '@/components/psicologia/AgregarEspecialidadAreaConocimiento.vue'
-import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
 
 // Extraemos las funciones para obtener y crear especialidades
 const { getEspecialidades } = useCitasConfiguracionEspecialidades()

@@ -6,7 +6,7 @@
         Listado de Feriados
       </h3>
       <!-- Botón Nuevo Registro usando acción "agregar" -->
-      <BaseButtonModuloPsicopedagogo
+      <main-button-psicologia
         text="Nuevo Registro"
         action="agregar"
         type="button"
@@ -38,7 +38,7 @@ import { useCitasConfiguracionFeriados } from '~/composables/psicologia/useCitas
 import TableBodyComponent from '@/components/table/TableBodyComponent.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import AgregarFeriadoModal from '@/components/psicologia/AgregarFeriadoModal.vue'
-import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
+import BaseButtonModuloPsicopedagogo from '~/components/global/main-button-psicologia.vue'
 import BaseSwitchButtonModuloPsicopedagogo from '@/components/global/BaseSwitchButtonModuloPsicopedagogo.vue'
 
 // Definición del type alias ExtendedColumnDef

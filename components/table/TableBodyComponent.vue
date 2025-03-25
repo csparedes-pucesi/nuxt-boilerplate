@@ -17,7 +17,6 @@ import {
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import Filter from './Filter.vue'
 import DebouncedInput from './DebouncedInput.vue'
-import LocalMainButtonComponent from '@/components/global/LocalMainButtonComponent.vue'
 
 // Agregamos el nuevo prop opcional: dropdownColumns
 const props = withDefaults(
@@ -459,29 +458,29 @@ function goToNextPage() {
     <div class="h-4" />
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <LocalMainButtonComponent
+        <main-button
           type="button"
           text="Primera"
           :disabled="!table.getCanPreviousPage()"
           @click="goToFirstPage"
         />
-        <LocalMainButtonComponent
+        <main-button
           type="button"
           :disabled="!table.getCanPreviousPage()"
           @click="goToPreviousPage"
         >
           <UIcon name="heroicons-outline:chevron-left" class="w-6 h-6" />
           <span>Anterior</span>
-        </LocalMainButtonComponent>
-        <LocalMainButtonComponent
+        </main-button>
+        <main-button
           type="button"
           :disabled="!table.getCanNextPage()"
           @click="goToNextPage"
         >
           <span>Siguiente</span>
           <UIcon name="heroicons-outline:chevron-right" class="w-6 h-6" />
-        </LocalMainButtonComponent>
-        <LocalMainButtonComponent
+        </main-button>
+        <main-button
           type="button"
           text="Última"
           :disabled="!table.getCanNextPage()"

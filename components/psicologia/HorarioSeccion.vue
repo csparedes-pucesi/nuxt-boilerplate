@@ -74,7 +74,7 @@
         class="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3"
       >
         <!-- Botón CANCELAR: usa acción "cancelar" -->
-        <BaseButtonModuloPsicopedagogo
+        <main-button-psicologia
           v-if="isEditing"
           text="CANCELAR"
           action="cancelar"
@@ -82,7 +82,7 @@
           @click="cancelEdit"
         />
         <!-- Botón EDITAR HORARIO: usa acción "editar" -->
-        <BaseButtonModuloPsicopedagogo
+        <main-button-psicologia
           v-if="!isEditing"
           text="EDITAR HORARIO"
           action="editar"
@@ -90,7 +90,7 @@
           @click="isEditing = true"
         />
         <!-- Botón ACTUALIZAR HORARIO: usa acción "guardar" -->
-        <BaseButtonModuloPsicopedagogo
+        <main-button-psicologia
           v-else
           text="ACTUALIZAR HORARIO"
           action="guardar"
@@ -109,7 +109,6 @@ import type {
   PutHorarioDTO,
 } from '@/types/psicologia/HorarioEstandar.dto'
 import { useCitasConfiguracionHorario } from '~/composables/psicologia/useCitasConfiguracionHorario'
-import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
 
 const isEditing = ref(false)
 const horario = reactive<GetHorarioDTO>({

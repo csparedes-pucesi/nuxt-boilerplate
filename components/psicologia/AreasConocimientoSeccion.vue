@@ -6,8 +6,8 @@
         <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-100">
           Áreas de Conocimiento
         </h2>
-        <!-- Botón AGREGAR ÁREA reemplazado con BaseButtonModuloPsicopedagogo -->
-        <BaseButtonModuloPsicopedagogo
+        <!-- Botón AGREGAR ÁREA reemplazado con main-button-psicologia -->
+        <main-button-psicologia
           text="AGREGAR ÁREA"
           color="green"
           type="button"
@@ -43,7 +43,7 @@ import { useEspecialidadStore } from '~/stores/psicologia/especialidadStore'
 import AgregarAreaConocimientoModal from '@/components/psicologia/AgregarAreaConocimientoModal.vue'
 import TableBodyComponent from '@/components/table/TableBodyComponent.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
-import BaseButtonModuloPsicopedagogo from '@/components/global/BaseButtonModuloPsicopedagogo.vue'
+import BaseButtonModuloPsicopedagogo from '~/components/global/main-button-psicologia.vue'
 
 const { getAreasConocimiento } = useCitasConfiguracionAreasConocimiento()
 
