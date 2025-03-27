@@ -94,7 +94,10 @@
           class="flex-1 flex items-center justify-center gap-2 bg-transparent border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100 font-medium rounded-md py-2 transition focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 text-sm"
           @click="aceptarCita"
         >
-          <UIcon name="i-lucide-heart" class="w-6 h-6 text-red-500" />
+          <UIcon
+            name="lucide-heart"
+            class="w-6 h-6 text-gray-700 dark:text-white"
+          />
           Aceptar
         </button>
 
@@ -104,7 +107,7 @@
           @click="rechazarCita"
         >
           <UIcon
-            name="i-lucide-x-circle"
+            name="lucide:circle-x"
             class="w-6 h-6 text-gray-700 dark:text-white"
           />
           Rechazar
@@ -116,7 +119,7 @@
           @click="reagendarCita"
         >
           <UIcon
-            name="i-lucide-refresh-cw"
+            name="lucide-refresh-cw"
             class="w-6 h-6 text-gray-700 dark:text-white"
           />
           Reagendar
@@ -130,7 +133,7 @@
           @click="closeModal"
         >
           <UIcon
-            name="i-lucide-x"
+            name="lucide-x"
             class="w-6 h-6 inline-block mr-2 dark:text-gray-100"
           />
           Cerrar

@@ -153,6 +153,7 @@ export function useCalendarOptions(deps: CalendarDeps): {
 
       deps.onEventClick(adaptedEvent)
     },
+    
 
     /* 3.4.2. Renderizado personalizado del contenido de un evento */
     eventContent: function (arg: EventContentArg): { domNodes: HTMLElement[] } {
