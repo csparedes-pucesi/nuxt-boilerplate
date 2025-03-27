@@ -24,6 +24,7 @@ export interface RutaType {
   ruta_component: string
   ruta_indexed: boolean
   roru_privilegio: number
+  ruta_hijas?: RutaType[]
 }
 
 export interface UsuarioType {
