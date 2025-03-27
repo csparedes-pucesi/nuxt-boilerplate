@@ -1,10 +1,11 @@
 import { useMutation } from '@tanstack/vue-query'
 import useApi from '../api/api'
 import { useMyLoginStore } from '../../stores/login/login'
+import type { RespLoginType } from '../../types/login/login.type'
 
 //
 const postLogin = async (data: { username: string; password: string }) => {
-  const response = await useApi.post('/auth/login', data)
+  const response = await useApi.post<RespLoginType>('/auth/login', data)
   return response.data
 }
 
