@@ -168,8 +168,17 @@ const toggleSidebar = () => {
 }
 
 const logout = () => {
-  localStorage.removeItem('token')
+  // 🧽 Limpiar cookies
+  const token = useCookie('token')
+  const rutas = useCookie('rutas')
+  token.value = null
+  rutas.value = null
+
+  // 🧹 Limpiar storage (por si acaso)
+  localStorage.clear()
   sessionStorage.clear()
+
+  // 🔁 Redirigir al login
   router.push({ name: 'login', replace: true })
 }
 
