@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   runtimeConfig: {
-    port: Number(process.env.PORT || '3000'),
+    port: Number(process.env.PORT || '5000'),
     backendUrl: process.env.BACKEND_URL || 'http://localhost:3000',
     // public: {
     //   backendUrl: process.env.BACKEND_URL,
@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
   ],
   css: ['~/assets/css/main.css', '~/assets/fonts/fonts.css'],
   ui: {
@@ -31,5 +32,16 @@ export default defineNuxtConfig({
       ],
     },
   },
-  // plugins: ['~/plugins/tankstack-query.ts', '~/plugins/axios.ts'],
+  piniaPluginPersistedstate: {
+    storage: 'localStorage',
+    cookieOptions: {
+      sameSite: 'lax',
+    },
+    debug: true,
+  },
+  app: {
+    pageTransition: {
+      mode: 'out-in',
+    },
+  },
 })

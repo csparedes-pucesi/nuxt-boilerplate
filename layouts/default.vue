@@ -148,7 +148,7 @@
         </div>
       </nav>
       <!-- Contenido dinámico -->
-      <div class="pt-14 bg-white dark:bg-gray-900">
+      <div class="py-20 px-4 bg-white dark:bg-gray-900">
         <slot />
       </div>
     </div>

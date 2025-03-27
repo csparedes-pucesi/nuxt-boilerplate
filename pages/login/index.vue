@@ -66,7 +66,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <UButton
           type="submit"
           class="w-full flex items-center justify-center p-4"
-          label="Ingresar"
+          :label="useLogin.isPending.value ? 'Cargando...' : 'Iniciar sesión'"
           :loading="useLogin.isPending.value"
         />
       </UForm>

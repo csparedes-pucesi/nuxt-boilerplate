@@ -1,45 +1,34 @@
 import { useMutation } from '@tanstack/vue-query'
 import useApi from '../api/api'
+import { useMyLoginStore } from '../../stores/login/login'
+import type { RespLoginType } from '../../types/login/login.type'
 
 //
 const postLogin = async (data: { username: string; password: string }) => {
-  const response = await useApi.post('/auth/login', data)
-  console.log(response.data)
+  const response = await useApi.post<RespLoginType>('/auth/login', data)
   return response.data
 }
 
 export const usePostLogin = () => {
-  const toast = useToast()
-  const router = useRouter()
-
+  const toast = shallowRef(useToast())
+  const store = useMyLoginStore()
   return useMutation({
     mutationFn: postLogin,
     onSuccess: (data) => {
-      // Extraer nombre completo y rol
-      const nombre = `${data.usuario?.usu_nombre ?? ''} ${
-        data.usuario?.usu_apellido ?? ''
-      }`.trim()
-      const rol = data.rol?.rol_nombre ?? 'Sin rol'
-
-      toast.add({
-        title: 'Inicio de sesión exitoso',
-        description: `Bienvenido, ${nombre} - Rol: ${rol}`,
+      store.setData(data)
+      toast.value.add({
+        title: 'Acceso correcto',
+        description: 'Acceso correcto',
         color: 'success',
       })
 
+      const router = useRouter()
       router.push('/dashboard')
     },
-    onError: (error: {
-      response?: { data?: { message?: string } }
-      message?: string
-    }) => {
-      console.error('Login error', error)
-      toast.add({
-        title: 'Error al iniciar sesión',
-        description:
-          error?.response?.data?.message ||
-          error.message ||
-          'Error desconocido',
+    onError: (error) => {
+      toast.value.add({
+        title: 'Login error',
+        description: error.message,
         color: 'error',
       })
     },
